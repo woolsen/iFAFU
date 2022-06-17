@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="cn.ifafu.ifafu.ui.examlist.ExamListViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <cn.ifafu.ifafu.ui.view.WoToolbar
+            android:id="@+id/tb_exam"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            app:subtitle='@{vm.semester.toString() ?? @string/loading}'
+            app:title="@string/exam"
+            tools:subtitle="2019-2020学年第2学期">
+
+            <ImageButton
+                android:id="@+id/btn_refresh"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="8dp"
+                android:contentDescription="@string/refresh_score"
+                android:padding="4dp"
+                android:src="@drawable/ic_refresh" />
+
+        </cn.ifafu.ifafu.ui.view.WoToolbar>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:background="#DDFFFF"
+            android:gravity="center"
+            android:text="@string/exam_hint"
+            android:textColor="#1dcbdb"
+            android:textSize="12sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <cn.ifafu.ifafu.ui.view.EmptyView
+                android:id="@+id/view_exam_empty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:visibility="gone"
+                app:message="@string/exam_data_empty" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_exam"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#EEEEEE"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:orientation="vertical"
+                tools:listitem="@layout/exam_list_item" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>

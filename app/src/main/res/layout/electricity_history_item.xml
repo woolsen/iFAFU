@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="balance"
+            type="String" />
+
+        <variable
+            name="date"
+            type="String" />
+
+        <variable
+            name="diff"
+            type="Double" />
+
+        <variable
+            name="unit"
+            type="String" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?selectableItemBackground"
+        android:paddingStart="12dp"
+        android:paddingTop="@dimen/electricity_item_history_padding_vertical"
+        android:paddingEnd="12dp"
+        android:paddingBottom="@dimen/electricity_item_history_padding_vertical">
+
+        <TextView
+            android:id="@+id/tv_balance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{balance}"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="余额:100.05度" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@{date}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_balance"
+            tools:text="8月15日 11:59" />
+
+        <TextView
+            android:id="@+id/tv_differ"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="2dp"
+            android:textColor="@color/light_blue_600"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:electricityDiff="@{diff}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tv_unit"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="+10.5" />
+
+        <TextView
+            android:id="@+id/tv_unit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{unit}"
+            android:textColor="@color/light_blue_600"
+            android:textSize="14sp"
+            app:layout_constraintBaseline_toBaselineOf="@id/tv_differ"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="度" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

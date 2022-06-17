@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/menu_add"
+        android:title="@string/add_course"
+        android:icon="@drawable/ic_add"
+        app:showAsAction="always" />
+    <item android:id="@+id/menu_refresh"
+        android:title="@string/refresh_timetable"
+        android:icon="@drawable/ic_refresh"
+        app:showAsAction="always" />
+    <item android:id="@+id/menu_setting"
+        android:title="@string/schedule_setting"
+        android:icon="@drawable/ic_setting"
+        app:showAsAction="always" />
+</menu>

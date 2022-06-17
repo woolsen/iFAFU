@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="cn.ifafu.ifafu.util.Converter" />
+
+        <variable
+            name="user"
+            type="cn.ifafu.ifafu.entity.User" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transparent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingStart="0dp"
+        android:paddingEnd="140dp"
+        tools:background="#CCD">
+
+        <ImageView
+            android:id="@+id/iv_menu_icon"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:contentDescription="@{Converter.schoolToString(user.school)}"
+            android:src="@{Converter.schoolToIconWhite(context, user.school)}"
+            tools:src="@drawable/fafu_bb_icon_white" />
+
+        <TextView
+            android:id="@+id/tv_menu_name"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:text="@{user.name}"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            tools:text="雾深水浅" />
+
+        <TextView
+            android:id="@+id/tv_nav_update"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:layout_marginTop="20dp"
+            android:drawablePadding="20dp"
+            android:gravity="center"
+            android:text="@string/menu_update"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:drawableStartCompat="@drawable/ic_update" />
+
+        <TextView
+            android:id="@+id/tv_nav_checkout"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:layout_marginTop="12dp"
+            android:drawablePadding="20dp"
+            android:gravity="center"
+            android:text="@string/menu_logout"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:drawableStartCompat="@drawable/ic_logout" />
+
+        <TextView
+            android:id="@+id/tv_nav_about"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:layout_marginTop="12dp"
+            android:drawablePadding="20dp"
+            android:gravity="center"
+            android:text="@string/menu_about"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:drawableStartCompat="@drawable/ic_about" />
+
+        <TextView
+            android:id="@+id/tv_nav_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:layout_marginTop="12dp"
+            android:drawablePadding="20dp"
+            android:gravity="center"
+            android:text="@string/menu_setting"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:drawableStartCompat="@drawable/ic_setting_line" />
+
+        <TextView
+            android:id="@+id/tv_nav_feedback"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="20dp"
+            android:drawablePadding="20dp"
+            android:gravity="center"
+            android:text="@string/feedback"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:drawableStartCompat="@drawable/ic_feedback_white" />
+
+    </LinearLayout>
+
+</layout>

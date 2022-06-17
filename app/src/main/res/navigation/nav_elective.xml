@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_score"
+    app:startDestination="@+id/fragment_elective">
+
+    <fragment
+        android:id="@+id/fragment_elective"
+        android:name="cn.ifafu.ifafu.ui.elective.ElectiveFragment"
+        tools:layout="@layout/elective_fragment">
+
+        <action
+            android:id="@+id/action_fragment_elective_to_fragment_score_detail"
+            app:destination="@id/fragment_score_detail"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_score_detail"
+        android:name="cn.ifafu.ifafu.ui.score.ScoreDetailFragment"
+        android:label="fragment_score_detail"
+        tools:layout="@layout/score_fragment_detail">
+
+        <argument
+            android:name="score"
+            app:argType="cn.ifafu.ifafu.entity.Score" />
+    </fragment>
+
+</navigation>

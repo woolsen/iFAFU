@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+    <cn.ifafu.ifafu.ui.view.VerticalDrawerLayout
+        android:id="@+id/drawerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/content"
+            layout="@layout/timetable_content" />
+
+        <include
+            android:id="@+id/drawer"
+            layout="@layout/timetable_bottom_drawer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom" />
+
+    </cn.ifafu.ifafu.ui.view.VerticalDrawerLayout>
+</layout>

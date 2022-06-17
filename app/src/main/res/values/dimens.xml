@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="information_register_input_margin_top">18dp</dimen>
+
+    <dimen name="electricity_item_history_padding_vertical">8dp</dimen>
+</resources>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:gravity="center_vertical"
+    android:minHeight="56dp"
+    android:orientation="horizontal"
+    android:paddingStart="8dp"
+    android:paddingEnd="20dp">
+
+    <ImageView
+        android:id="@+id/iv_tip"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="-10dp"
+        tools:src="@drawable/ic_score_mian" />
+
+    <TextView
+        android:id="@+id/tv_score_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="8dp"
+        android:layout_weight="1"
+        android:textColor="@color/ifafu_blue"
+        android:textSize="18sp"
+        android:transitionName="@string/transition_name_score_title"
+        tools:text="计算机网络" />
+
+    <TextView
+        android:id="@+id/tv_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical|end"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:text="98.9"
+        tools:textColor="@color/ifafu_blue" />
+
+</LinearLayout>

@@ -1,0 +1,24 @@
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+        maven { url "https://www.jitpack.io" }
+        google()
+        mavenCentral()
+//        maven { url 'https://maven.aliyun.com/repository/google' }
+//        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+//        maven { url 'https://maven.aliyun.com/repository/public' }
+//        maven { url "https://www.jitpack.io" }
+//        google()
+//        mavenCentral()
+//        //noinspection JcenterRepositoryObsolete,GrDeprecatedAPIUsage
+//        jcenter()
+//        maven { url "https://maven.google.com" }
+//        maven { url 'https://jitpack.io' }
+//        maven { url 'https://dl.bintray.com/umsdk/release' }
+    }
+}
+rootProject.name = "iFAFU"
+include ':app'

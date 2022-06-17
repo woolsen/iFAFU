@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/contact_type_qq"
+        android:title="QQ" />
+    <item android:id="@+id/contact_type_wechat"
+        android:title="微信" />
+    <item android:id="@+id/contact_type_phone"
+        android:title="手机" />
+    <item android:id="@+id/contact_type_null"
+        android:title="无" />
+</menu>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/information_menu_agree"
+        android:title="@string/information_agree" />
+    <item
+        android:id="@+id/information_menu_disagree"
+        android:title="@string/information_disagree" />
+</menu>

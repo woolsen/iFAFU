@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="online"
+            type="Boolean" />
+
+        <variable
+            name="user"
+            type="cn.ifafu.ifafu.entity.User" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="24dp"
+        android:background="#686868"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:id="@+id/layout_left_menu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="-3dp"
+                android:src="@drawable/icon_hat" />
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/main_old_shape_bigheadimg"
+                android:gravity="center"
+                android:text="@{user.name.substring(user.name.length() - 2)}"
+                android:textColor="#ffffff"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                tools:text="雾深" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="26dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@{user.account}"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:text="3170000000" />
+
+            <TextView
+                android:layout_width="60dp"
+                android:layout_height="18dp"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/main_old_menu_vip"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="@string/vip"
+                android:textColor="#ff0000"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="26dp"
+                android:layout_marginBottom="5dp"
+                android:gravity="center_vertical|center_horizontal"
+                android:text='@{online? @string/online2 : @string/offline2}'
+                android:textColor="@{online? @color/green : @color/red_2}"
+                android:textSize="13sp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+</layout>

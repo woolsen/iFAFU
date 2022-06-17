@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <item android:id="@+id/information_menu_login"
+        app:showAsAction="ifRoom"
+        android:title="@string/information_login"
+        android:visible="false"
+        tools:visible="true"/>
+    <item android:id="@+id/information_menu_center"
+        app:showAsAction="collapseActionView"
+        android:title="@string/information_person_center"
+        android:visible="false"
+        tools:visible="true"/>
+    <item android:id="@+id/information_menu_about"
+        app:showAsAction="collapseActionView"
+        android:title="@string/information_about_information" />
+    <item android:id="@+id/information_menu_logout"
+        app:showAsAction="collapseActionView"
+        android:title="@string/information_logout"
+        android:visible="false"
+        tools:visible="true"/>
+</menu>

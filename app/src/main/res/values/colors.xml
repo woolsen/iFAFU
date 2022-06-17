@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--主题颜色-->
+    <color name="colorPrimary">#FFFFFF</color>
+    <color name="colorPrimaryDark">#FFFFFF</color>
+    <color name="colorAccent">#FFFFFF</color>
+
+    <color name="ic_launcher_background">#FFFFFF</color>
+    <color name="ic_launcher_background_debug">#FFFFFF</color>
+
+    <color name="ifafu_blue">#1296DB</color>
+    <color name="bg_gray">#EEEEEE</color>
+    <color name="cyan">#00FFFF</color>
+
+    <color name="light_blue_600">#039be5</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000</color>
+    <color name="effective_black">#2a2a2a</color>
+    <color name="blue">#0000FF</color>
+    <color name="red">#FF0000</color>
+    <color name="red_2">#FF2222</color>
+    <color name="green">#52fb49</color>
+    <color name="gray">#dbdbdb</color>
+
+    <color name="blue1">#5697E5</color>
+    <color name="blue2">#805697E5</color>
+
+    <color name="global_blue">#157EFB</color>
+    <color name="light_gray">#dbdbdb</color>
+    <color name="transparent">#00000000</color>
+
+    <color name="information_colorAccent">#ccc</color>
+    <color name="information_colorPrimary">#fff</color>
+    <color name="information_colorPrimaryDark">#ccc</color>
+
+    <color name="information_white">#FFF</color>
+    <color name="information_black">#000</color>
+    <color name="information_cyan_700">#0097A7</color>
+    <color name="information_grey_400">#BDBDBD</color>
+    <color name="information_blue_500">#2196F3</color>
+    <color name="information_red_500">#f44336</color>
+    <color name="information_orange_500">#FF9800</color>
+
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+
+    <color name="colorPrimary2">#03dac5</color>
+    <color name="colorLight">#66fff8</color>
+    <color name="colorDart">#00a895</color>
+</resources>

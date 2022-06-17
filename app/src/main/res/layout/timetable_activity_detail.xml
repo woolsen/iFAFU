@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tool_bar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:navigationIcon="@drawable/ic_back"
+        app:elevation="4dp"
+        app:title="@string/course_detail"
+        app:menu="@menu/timetable_item"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="128dp"
+        android:layout_marginTop="3dp"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="1dp"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:paddingStart="18dp"
+            android:paddingEnd="18dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="@string/course_name"
+                android:textColor="#adadad"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_course_name"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:textColor="#404040"
+                android:textSize="16sp"
+                tools:text="计算机网络" />
+
+            <EditText
+                android:id="@+id/et_course_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/course_name"
+                android:imeOptions="actionNext"
+                android:minHeight="40dp"
+                android:textColor="#404040"
+                android:textSize="16sp"
+                tools:visibility="gone" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="1dp"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:paddingStart="18dp"
+            android:paddingEnd="18dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="@string/course_time"
+                android:textColor="#adadad"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_course_time"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:textColor="#404040"
+                android:textSize="16sp"
+                tools:text="周一 第3 ~ 4节" />
+
+            <TextView
+                android:id="@+id/et_course_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="40dp"
+                android:orientation="horizontal"
+                android:textColor="#404040"
+                android:textSize="16sp"
+                app:drawableEndCompat="@drawable/ic_down_little"
+                tools:visibility="gone" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="128dp"
+        android:layout_marginTop="3dp"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="1dp"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:paddingStart="18dp"
+            android:paddingEnd="18dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="@string/course_address"
+                android:textColor="#adadad"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_course_address"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:textColor="#404040"
+                android:textSize="16sp"
+                tools:text="田601" />
+
+            <EditText
+                android:id="@+id/et_course_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/course_address"
+                android:imeOptions="actionNext"
+                android:minHeight="40dp"
+                android:textColor="#404040"
+                android:textSize="16sp"
+                tools:visibility="gone" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="1dp"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:paddingStart="18dp"
+            android:paddingEnd="18dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="@string/course_teacher"
+                android:textColor="#adadad"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_course_teacher"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:textColor="#404040"
+                android:textSize="16sp"
+                tools:text="叶竹花" />
+
+            <EditText
+                android:id="@+id/et_course_teacher"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/course_teacher"
+                android:imeOptions="actionNext"
+                android:maxWidth="80dp"
+                android:minHeight="40dp"
+                android:textColor="#404040"
+                android:textSize="16sp"
+                tools:visibility="gone" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="15dp"
+        android:text="@string/course_weeks"
+        android:textColor="#adadad"
+        android:textSize="12sp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/weeksRv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="20dp"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="6"
+        tools:itemCount="24"
+        tools:listitem="@layout/month_grid_item" />
+
+</LinearLayout>

@@ -1,0 +1,186 @@
+<HTML lang="gb2312">
+	<HEAD>
+		<title>现代教学管理信息系统</title><meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+		<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+		<meta http-equiv="Content-Language" content="gb2312">
+		<meta content="all" name="robots">
+		<meta content="作者信息" name="author">
+		<meta content="版权信息" name="Copyright">
+		<meta content="站点介绍" name="description">
+		<meta content="站点关键词" name="keywords">
+		<LINK href="style/base/favicon.ico" type="image/x-icon" rel="icon">
+			<LINK media="all" href="style/base/jw.css" type="text/css" rel="stylesheet">
+				<LINK media="all" href="style/standard/jw.css" type="text/css" rel="stylesheet">
+					<!--<script defer>   
+		function  PutSettings()   
+			{     
+			factory.printing.header="";   
+			factory.printing.footer="";   
+		    factory.printing.leftMargin="5";   
+			factory.printing.topMargin="5";   
+			factory.printing.rightMargin="5";   
+			factory.printing.bottomMargin="5";
+		 }
+
+					</script>-->
+					<style> @media Print { .bgnoprint { }
+	.noprint { DISPLAY: none }}
+	</style>
+	</HEAD>
+	<BODY>
+		<!--<OBJECT id="factory" style="DISPLAY: none" codeBase="ScriptX.cab#Version=5,60,0,360" classid="clsid:1663ed61-23eb-11d2-b92f-008048fdd814"
+			VIEWASTEXT>
+		</OBJECT>-->
+		<form name="xskb_form" method="post" action="xskbcx.aspx?xh=3185206048&amp;xm=%C2%DE%B3%FE%C3%EC&amp;gnmkdm=N121603" id="xskb_form">
+<input type="hidden" name="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" value="dDwzOTI4ODU2MjU7dDw7bDxpPDE+Oz47bDx0PDtsPGk8MT47aTwyPjtpPDQ+O2k8Nz47aTw5PjtpPDExPjtpPDEzPjtpPDE1PjtpPDI0PjtpPDI2PjtpPDI4PjtpPDMwPjtpPDMyPjtpPDM0Pjs+O2w8dDxwPHA8bDxUZXh0Oz47bDwwMjAxOS0yMDIwMjs+Pjs+Ozs+O3Q8dDxwPHA8bDxEYXRhVGV4dEZpZWxkO0RhdGFWYWx1ZUZpZWxkOz47bDx4bjt4bjs+Pjs+O3Q8aTwzPjtAPDIwMjAtMjAyMTsyMDE5LTIwMjA7MjAxOC0yMDE5Oz47QDwyMDIwLTIwMjE7MjAxOS0yMDIwOzIwMTgtMjAxOTs+PjtsPGk8MD47Pj47Oz47dDx0PDs7bDxpPDE+Oz4+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w85a2m5Y+377yaMzE4NTIwNjA0ODs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w85aeT5ZCN77ya572X5qWa5ri6Oz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDzlrabpmaLvvJrlm63oibrlrabpmaI7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPOS4k+S4mu+8muiuvuaWveWGnOS4muenkeWtpuS4juW3peeoizs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w86KGM5pS/54+t77yaMTjorr7mlr0y54+tOz4+Oz47Oz47dDw7bDxpPDE+Oz47bDx0PEAwPDs7Ozs7Ozs7Ozs+Ozs+Oz4+O3Q8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47bDxpPDE+Oz47bDx0PEAwPDs7Ozs7Ozs7Ozs+Ozs+Oz4+O3Q8QDA8cDxwPGw8UGFnZUNvdW50O18hSXRlbUNvdW50O18hRGF0YVNvdXJjZUl0ZW1Db3VudDtEYXRhS2V5czs+O2w8aTwxPjtpPDA+O2k8MD47bDw+Oz4+Oz47Ozs7Ozs7Ozs7Pjs7Pjt0PEAwPHA8cDxsPFBhZ2VDb3VudDtfIUl0ZW1Db3VudDtfIURhdGFTb3VyY2VJdGVtQ291bnQ7RGF0YUtleXM7PjtsPGk8MT47aTw0PjtpPDQ+O2w8Pjs+Pjs+Ozs7Ozs7Ozs7Oz47bDxpPDA+Oz47bDx0PDtsPGk8MT47aTwyPjtpPDM+O2k8ND47PjtsPHQ8O2w8aTwwPjtpPDE+O2k8Mj47aTwzPjtpPDQ+O2k8NT47aTw2Pjs+O2w8dDxwPHA8bDxUZXh0Oz47bDzorr7mlr3mpI3nianmoL3ln7nlrabvvIjkuIvvvInvvIjor77nqIvorrrmlofvvIk7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPOmZiOmdkumdkjs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8MS4wOz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDwwMS0xNzs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8Jm5ic3BcOzs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8Jm5ic3BcOzs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8Jm5ic3BcOzs+Pjs+Ozs+Oz4+O3Q8O2w8aTwwPjtpPDE+O2k8Mj47aTwzPjtpPDQ+O2k8NT47aTw2Pjs+O2w8dDxwPHA8bDxUZXh0Oz47bDzorr7mlr3lhpzkuJrorr7orqHkuI7lu7rpgKDvvIjor77nqIvorrrmlofvvIk7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPOeUs+WuneiQpTs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8MS4wOz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDwwMS0xNzs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8Jm5ic3BcOzs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8Jm5ic3BcOzs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8Jm5ic3BcOzs+Pjs+Ozs+Oz4+O3Q8O2w8aTwwPjtpPDE+O2k8Mj47aTwzPjtpPDQ+O2k8NT47aTw2Pjs+O2w8dDxwPHA8bDxUZXh0Oz47bDzkuJPkuJrnu7zlkIjlrp7ot7U7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPOmSn+WHpOaely/luLjmsZ8v5buW5b635Y2OOz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDwyLjA7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPDAxLTE3Oz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDwmbmJzcFw7Oz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDwmbmJzcFw7Oz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDwmbmJzcFw7Oz4+Oz47Oz47Pj47dDw7bDxpPDA+O2k8MT47aTwyPjtpPDM+O2k8ND47aTw1PjtpPDY+Oz47bDx0PHA8cDxsPFRleHQ7PjtsPOa1i+mHj+Wtpu+8iOivvueoi+WunuS5oO+8iTs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w86ams5Li5Oz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDwxLjAwOz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDwwNy0wNzs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8Jm5ic3BcOzs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8Jm5ic3BcOzs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8Jm5ic3BcOzs+Pjs+Ozs+Oz4+Oz4+Oz4+O3Q8QDA8cDxwPGw8UGFnZUNvdW50O18hSXRlbUNvdW50O18hRGF0YVNvdXJjZUl0ZW1Db3VudDtEYXRhS2V5czs+O2w8aTwxPjtpPDA+O2k8MD47bDw+Oz4+Oz47Ozs7Ozs7Ozs7Pjs7Pjt0PEAwPHA8cDxsPFBhZ2VDb3VudDtfIUl0ZW1Db3VudDtfIURhdGFTb3VyY2VJdGVtQ291bnQ7RGF0YUtleXM7PjtsPGk8MT47aTw0PjtpPDQ+O2w8Pjs+Pjs+Ozs7Ozs7Ozs7Oz47bDxpPDA+Oz47bDx0PDtsPGk8MT47aTwyPjtpPDM+O2k8ND47PjtsPHQ8O2w8aTwwPjtpPDE+O2k8Mj47aTwzPjtpPDQ+Oz47bDx0PHA8cDxsPFRleHQ7PjtsPDIwMjAtMjAyMTs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8Mjs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w85rWL6YeP5a2m77yI6K++56iL5a6e5Lmg77yJOz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDzpqazkuLk7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPDEuMDA7Pj47Pjs7Pjs+Pjt0PDtsPGk8MD47aTwxPjtpPDI+O2k8Mz47aTw0Pjs+O2w8dDxwPHA8bDxUZXh0Oz47bDwyMDIwLTIwMjE7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPDI7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPOS4k+S4mue7vOWQiOWunui3tTs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w86ZKf5Yek5p6XL+W4uOaxny/lu5blvrfljY47Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPDIuMDs+Pjs+Ozs+Oz4+O3Q8O2w8aTwwPjtpPDE+O2k8Mj47aTwzPjtpPDQ+Oz47bDx0PHA8cDxsPFRleHQ7PjtsPDIwMjAtMjAyMTs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8Mjs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w86K6+5pa95qSN54mp5qC95Z+55a2m77yI5LiL77yJ77yI6K++56iL6K665paH77yJOz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDzpmYjpnZLpnZI7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPDEuMDs+Pjs+Ozs+Oz4+O3Q8O2w8aTwwPjtpPDE+O2k8Mj47aTwzPjtpPDQ+Oz47bDx0PHA8cDxsPFRleHQ7PjtsPDIwMjAtMjAyMTs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8Mjs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w86K6+5pa95Yac5Lia6K6+6K6h5LiO5bu66YCg77yI6K++56iL6K665paH77yJOz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDznlLPlrp3okKU7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPDEuMDs+Pjs+Ozs+Oz4+Oz4+Oz4+Oz4+Oz4+Oz6VdqkFHYdwQNSKb+NDRySpErtppA==" />
+
+<script language="javascript" type="text/javascript">
+<!--
+	function __doPostBack(eventTarget, eventArgument) {
+		var theform;
+		if (window.navigator.appName.toLowerCase().indexOf("microsoft") > -1) {
+			theform = document.xskb_form;
+		}
+		else {
+			theform = document.forms["xskb_form"];
+		}
+		theform.__EVENTTARGET.value = eventTarget.split("$").join(":");
+		theform.__EVENTARGUMENT.value = eventArgument;
+		theform.submit();
+	}
+// -->
+</script>
+
+			<!-- 多功能操作区 -->
+			<!-- 内容显示区开始 -->
+			<div class="main_box ">
+				<div class="mid_box">
+					<div class="title noprint">
+						<p>
+							<!-- 查询得到的数据量显示区域 --></p>
+					</div>
+					<!-- From内容 --><span class="formbox">
+						<TABLE class="formlist noprint" id="Table2" width="100%">
+							<TR>
+								<TD align="center"><select name="xnd" onchange="__doPostBack('xnd','')" language="javascript" id="xnd">
+	<option selected="selected" value="2020-2021">2020-2021</option>
+	<option value="2019-2020">2019-2020</option>
+	<option value="2018-2019">2018-2019</option>
+
+</select><span id="Label2"><font size="4">学年第</font></span><select name="xqd" onchange="__doPostBack('xqd','')" language="javascript" id="xqd">
+	<option value="1">1</option>
+	<option selected="selected" value="2">2</option>
+	<option value="3">3</option>
+
+</select><span id="Label1"><font size="4">学期学生个人课程表</font></span></TD>
+							</TR>
+							<TR class="trbg1">
+								<TD><span id="Label5">学号：3185206048</span>|
+									<span id="Label6">姓名：罗楚渺</span>|
+									<span id="Label7">学院：园艺学院</span>|
+									<span id="Label8">专业：设施农业科学与工程</span>|
+									<span id="Label9">行政班：18设施2班</span>
+									&nbsp;&nbsp;&nbsp;&nbsp;<span id="labTS"><font color="Red"></font></span><span id="labTip"><font color="Red"></font></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input name="btnPrint" id="btnPrint" type="button" class="button" style="DISPLAY:none" onclick="window.print();" value="打印课表" />
+								</TD>
+							</TR>
+						</TABLE>
+						<br>
+						<table id="Table1" class="blacktab" bordercolor="Black" border="0" width="100%">
+	<tr>
+		<td colspan="2" rowspan="1" width="2%">时间</td><td align="Center" width="14%">星期一</td><td align="Center" width="14%">星期二</td><td align="Center" width="14%">星期三</td><td align="Center" width="14%">星期四</td><td align="Center" width="14%">星期五</td><td class="noprint" align="Center" width="14%">星期六</td><td class="noprint" align="Center" width="14%">星期日</td>
+	</tr><tr>
+		<td colspan="2">早晨</td><td align="Center">&nbsp;</td><td align="Center">&nbsp;</td><td align="Center">&nbsp;</td><td align="Center">&nbsp;</td><td align="Center">&nbsp;</td><td class="noprint" align="Center">&nbsp;</td><td class="noprint" align="Center">&nbsp;</td>
+	</tr><tr>
+		<td rowspan="5" width="1%">上午</td><td width="1%">第1节</td><td align="Center" rowspan="2" width="7%">测量学<br>周一第1,2节{第10-11周}<br>马丹(马丹)<br>网络教学平台1<br><br>测量学<br>周一第1,2节{第4-6周}<br>马丹(马丹)<br>网络教学平台1</td><td align="Center" width="7%">&nbsp;</td><td align="Center" width="7%">&nbsp;</td><td align="Center" width="7%">&nbsp;</td><td align="Center" rowspan="2" width="7%">信息技术在设施农业的应用（双语课）<br>周五第1,2节{第10-15周}<br>潘鹤立(潘鹤立)<br>诚B102</td><td class="noprint" align="Center" width="7%">&nbsp;</td><td class="noprint" align="Center" width="7%">&nbsp;</td>
+	</tr><tr>
+		<td>第2节</td><td align="Center">&nbsp;</td><td align="Center">&nbsp;</td><td align="Center">&nbsp;</td><td class="noprint" align="Center">&nbsp;</td><td class="noprint" align="Center">&nbsp;</td>
+	</tr><tr>
+		<td>第3节</td><td align="Center" rowspan="3">设施植物栽培学（下）<br>周一第3,4,5节{第6-6周|双周}<br>陈青青/郭容芳(陈青青,郭容芳)<br><br><br>设施植物栽培学（下）<br>周一第3,4,5节{第16-16周|双周}<br>陈青青/郭容芳(陈青青,郭容芳)<br><br><br>设施植物栽培学（下）<br>周一第3,4,5节{第10-10周|双周}<br>陈青青/郭容芳(陈青青,郭容芳)<br><br><br>无土栽培学<br>周一第3,4节{第11-13周}<br>刘爽(刘爽)<br>诚B302<br><br>无土栽培学<br>周一第3,4节{第4-5周}<br>刘爽(刘爽)<br>诚B302</td><td align="Center" rowspan="3">设施植物栽培学（下）<br>周二第3,4,5节{第16-16周|双周}<br>陈青青/郭容芳(陈青青,郭容芳)<br>田308<br><br>设施植物栽培学（下）<br>周二第3,4节{第10-15周}<br>陈青青/郭容芳(陈青青,郭容芳)<br>田308<br><br>设施植物栽培学（下）<br>周二第3,4节{第3-6周}<br>陈青青/郭容芳(陈青青,郭容芳)<br>田308</td><td align="Center" rowspan="3">设施农业设计与建造<br>周三第3,4,5节{第5-5周|单周}<br>申宝营/廖德华(申宝营)<br><br><br>设施农业设计与建造<br>周三第3,4,5节{第11-13周|单周}<br>申宝营/廖德华(申宝营)<br></td><td align="Center" rowspan="3">信息技术在设施农业的应用（双语课）<br>周四第3,4,5节{第12-16周|双周}<br>潘鹤立(潘鹤立)<br><br><br>设施农业设计与建造<br>周四第3,4节{第4-6周}<br>申宝营/廖德华(申宝营)<br>诚B102<br><br>设施农业设计与建造<br>周四第3,4节{第10-11周}<br>申宝营/廖德华(申宝营)<br>诚B102</td><td align="Center" rowspan="2">测量学<br>周五第3,4节{第3-6周}<br>马丹(马丹)<br>创516<br><br>测量学<br>周五第3,4节{第10-11周}<br>马丹(马丹)<br>创516</td><td class="noprint" align="Center">&nbsp;</td><td class="noprint" align="Center">&nbsp;</td>
+	</tr><tr>
+		<td>第4节</td><td class="noprint" align="Center">&nbsp;</td><td class="noprint" align="Center">&nbsp;</td>
+	</tr><tr>
+		<td>第5节</td><td align="Center">&nbsp;</td><td class="noprint" align="Center">&nbsp;</td><td class="noprint" align="Center">&nbsp;</td>
+	</tr><tr>
+		<td rowspan="4">下午</td><td>第6节</td><td align="Center" rowspan="2">工厂化育苗原理与技术<br>周一第6,7节{第11-13周}<br>刘生财(刘生财)<br>诚B202<br><br>工厂化育苗原理与技术<br>周一第6,7节{第1-5周}<br>刘生财(刘生财)<br>诚B202</td><td align="Center" rowspan="2">设施农业设计与建造<br>周二第6,7节{第10-12周}<br>申宝营/廖德华(申宝营)<br>诚B102<br><br>设施农业设计与建造<br>周二第6,7节{第4-6周}<br>申宝营/廖德华(申宝营)<br>诚B102</td><td align="Center" rowspan="2">工厂化育苗原理与技术<br>周三第6,7节{第2-6周|双周}<br>刘生财(刘生财)<br><br><br>信息技术在设施农业的应用（双语课）<br>周三第6,7节{第10-15周}<br>潘鹤立(潘鹤立)<br>诚B102</td><td align="Center" rowspan="2">无土栽培学<br>周四第6,7节{第11-11周|单周}<br>刘爽(刘爽)<br><br><br>无土栽培学<br>周四第6,7节{第6-6周|双周}<br>刘爽(刘爽)<br><br><br>无土栽培学<br>周四第6,7节{第14-14周|双周}<br>刘爽(刘爽)<br></td><td align="Center" rowspan="2">无土栽培学<br>周五第6,7节{第4-6周}<br>刘爽(刘爽)<br>诚B202<br><br>无土栽培学<br>周五第6,7节{第10-13周}<br>刘爽(刘爽)<br>诚B202</td><td class="noprint" align="Center" rowspan="2">测量学<br>周六第6,7节{第10-11周}<br>马丹(马丹)<br><br><br>测量学<br>周六第6,7节{第3-6周}<br>马丹(马丹)<br></td><td class="noprint" align="Center">&nbsp;</td>
+	</tr><tr>
+		<td>第7节</td><td class="noprint" align="Center">&nbsp;</td>
+	</tr><tr>
+		<td>第8节</td><td align="Center">工厂化育苗原理与技术<br>周一第8节{第11-12周}<br>刘生财(刘生财)<br>诚B202<br><br>工厂化育苗原理与技术<br>周一第8节{第1-5周}<br>刘生财(刘生财)<br>诚B202</td><td align="Center">设施农业设计与建造<br>周二第8节{第12-12周|双周}<br>申宝营/廖德华(申宝营)<br>诚B102</td><td align="Center">工厂化育苗原理与技术<br>周三第8节{第2-6周|双周}<br>刘生财(刘生财)<br></td><td align="Center">无土栽培学<br>周四第8节{第11-11周|单周}<br>刘爽(刘爽)<br><br><br>无土栽培学<br>周四第8节{第6-6周|双周}<br>刘爽(刘爽)<br><br><br>无土栽培学<br>周四第8节{第14-14周|双周}<br>刘爽(刘爽)<br></td><td align="Center" rowspan="2">形势与政策6<br>周五第8,9节{第1-4周}<br>蔡湄湄<br>田211</td><td class="noprint" align="Center">测量学<br>周六第8节{第3-6周}<br>马丹(马丹)<br><br><br>测量学<br>周六第8节{第10-11周}<br>马丹(马丹)<br></td><td class="noprint" align="Center">&nbsp;</td>
+	</tr><tr>
+		<td>第9节</td><td align="Center">&nbsp;</td><td align="Center">&nbsp;</td><td align="Center">&nbsp;</td><td align="Center">&nbsp;</td><td class="noprint" align="Center">&nbsp;</td><td class="noprint" align="Center">&nbsp;</td>
+	</tr><tr>
+		<td rowspan="3">晚上</td><td>第10节</td><td align="Center">&nbsp;</td><td align="Center">&nbsp;</td><td align="Center" rowspan="2">职业指导2<br>周三第10,11节{第11-17周|单周}<br>徐志杰/王捷<br>禧104</td><td align="Center">&nbsp;</td><td align="Center">&nbsp;</td><td class="noprint" align="Center">&nbsp;</td><td class="noprint" align="Center">&nbsp;</td>
+	</tr><tr>
+		<td>第11节</td><td align="Center">&nbsp;</td><td align="Center">&nbsp;</td><td align="Center">&nbsp;</td><td align="Center">&nbsp;</td><td class="noprint" align="Center">&nbsp;</td><td class="noprint" align="Center">&nbsp;</td>
+	</tr><tr>
+		<td>第12节</td><td align="Center">&nbsp;</td><td align="Center">&nbsp;</td><td align="Center">&nbsp;</td><td align="Center">&nbsp;</td><td align="Center">&nbsp;</td><td class="noprint" align="Center">&nbsp;</td><td class="noprint" align="Center">&nbsp;</td>
+	</tr>
+</table>
+						<br>
+						
+						
+						<div class="noprint" align="left">调、停（补）课信息：</div>
+						<table class="datelist noprint" cellspacing="0" cellpadding="3" border="0" id="DBGrid" width="100%">
+	<tr class="datelisthead">
+		<td>编号</td><td>课程名称</td><td>原上课时间地点教师</td><td>现上课时间地点教师</td><td>申请时间</td>
+	</tr>
+</table>
+						<TABLE class="noprint" id="Table3" width="100%">
+							<TR>
+								<TD align="left">实践课(或无上课时间)信息：</TD>
+							</TR>
+							<TR>
+								<TD valign="top"><table class="datelist" cellspacing="0" cellpadding="3" border="0" id="DataGrid1" width="100%">
+	<tr class="datelisthead">
+		<td>课程名称</td><td>教师</td><td>学分</td><td>起止周</td><td>上课时间</td><td>上课地点</td>
+	</tr><tr>
+		<td>设施植物栽培学（下）（课程论文）</td><td>陈青青</td><td>1.0</td><td>01-17</td><td>&nbsp;</td><td>&nbsp;</td>
+	</tr><tr class="alt">
+		<td>设施农业设计与建造（课程论文）</td><td>申宝营</td><td>1.0</td><td>01-17</td><td>&nbsp;</td><td>&nbsp;</td>
+	</tr><tr>
+		<td>专业综合实践</td><td>钟凤林/常江/廖德华</td><td>2.0</td><td>01-17</td><td>&nbsp;</td><td>&nbsp;</td>
+	</tr><tr class="alt">
+		<td>测量学（课程实习）</td><td>马丹</td><td>1.00</td><td>07-07</td><td>&nbsp;</td><td>&nbsp;</td>
+	</tr>
+</table></TD>
+							</TR>
+							<TR>
+								<TD align="left">实习课信息：</TD>
+							</TR>
+							<TR>
+								<TD><table class="datelist" cellspacing="0" cellpadding="3" border="0" id="DBGridYxkc" width="100%">
+	<tr class="datelisthead">
+		<td>学年</td><td>学期</td><td>课程名称</td><td>实习时间</td><td>模块代号</td><td>先修模块</td><td>实习编号</td>
+	</tr>
+</table></TD>
+							</TR>
+							<TR>
+								<TD align="left">未安排上课时间的课程：</TD>
+							</TR>
+							<TR>
+								<TD><table class="datelist" cellspacing="0" cellpadding="3" border="0" id="Datagrid2" width="100%">
+	<tr class="datelisthead">
+		<td>学年</td><td>学期</td><td>课程名称</td><td>教师姓名</td><td>学分</td>
+	</tr><tr>
+		<td>2020-2021</td><td>2</td><td>测量学（课程实习）</td><td>马丹</td><td>1.00</td>
+	</tr><tr class="alt">
+		<td>2020-2021</td><td>2</td><td>专业综合实践</td><td>钟凤林/常江/廖德华</td><td>2.0</td>
+	</tr><tr>
+		<td>2020-2021</td><td>2</td><td>设施植物栽培学（下）（课程论文）</td><td>陈青青</td><td>1.0</td>
+	</tr><tr class="alt">
+		<td>2020-2021</td><td>2</td><td>设施农业设计与建造（课程论文）</td><td>申宝营</td><td>1.0</td>
+	</tr>
+</table></TD>
+							</TR>
+						</TABLE>
+					</span>
+					<div class="footbox noprint"><em class="footbox_con"><span class="pagination"></span>
+							<span class="footbutton"></span>
+							<!-- 底部按钮位置 --></em></div>
+				</div>
+			</div>
+		</form>
+	</BODY>
+</HTML>

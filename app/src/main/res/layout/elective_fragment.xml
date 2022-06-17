@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="cn.ifafu.ifafu.ui.elective.ElectiveViewModel" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/tb_elective"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/white"
+            android:elevation="4dp"
+            app:menu="@menu/elective"
+            app:navigationContentDescription="@string/back"
+            app:navigationIcon="@drawable/ic_back"
+            app:title="@string/elective" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:animateLayoutChanges="true"
+                android:orientation="vertical"
+                android:paddingTop="4dp">
+
+                <cn.ifafu.ifafu.ui.elective.ElectiveView
+                    android:id="@+id/e_total"
+                    elective="@{vm.total}"
+                    visibleGoneWhen="@{vm.total == null}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:visibility="visible" />
+
+                <cn.ifafu.ifafu.ui.elective.ElectiveView
+                    android:id="@+id/e_zrkx"
+                    elective="@{vm.zrkx}"
+                    visibleGoneWhen="@{vm.zrkx == null}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <cn.ifafu.ifafu.ui.elective.ElectiveView
+                    android:id="@+id/e_rwsk"
+                    elective="@{vm.rwsk}"
+                    visibleGoneWhen="@{vm.rwsk == null}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <cn.ifafu.ifafu.ui.elective.ElectiveView
+                    android:id="@+id/e_wxsy"
+                    elective="@{vm.wxsy}"
+                    visibleGoneWhen="@{vm.wxsy == null}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <cn.ifafu.ifafu.ui.elective.ElectiveView
+                    android:id="@+id/e_cxcy"
+                    elective="@{vm.cxcy}"
+                    visibleGoneWhen="@{vm.cxcy == null}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <cn.ifafu.ifafu.ui.elective.ElectiveView
+                    android:id="@+id/e_ysty"
+                    elective="@{vm.ysty}"
+                    visibleGoneWhen="@{vm.ysty == null}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</layout>

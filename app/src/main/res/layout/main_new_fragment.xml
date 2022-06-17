@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="cn.ifafu.ifafu.ui.main.new_theme.MainNewViewModel" />
+        <variable
+            name="activityViewModel"
+            type="cn.ifafu.ifafu.ui.main.MainViewModel" />
+    </data>
+
+    <cn.ifafu.ifafu.ui.view.DragLayout
+        android:id="@+id/drawer_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/main_left_bg"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/left_menu"
+            layout="@layout/main_new_include_left_menu"
+            bind:user="@{activityViewModel.user}" />
+
+        <cn.ifafu.ifafu.ui.view.MyLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/content"
+                layout="@layout/main_new_include"
+                bind:weather="@{vm.weather}" />
+
+        </cn.ifafu.ifafu.ui.view.MyLinearLayout>
+
+    </cn.ifafu.ifafu.ui.view.DragLayout>
+</layout>

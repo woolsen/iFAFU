@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="4dp"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <cn.ifafu.ifafu.ui.view.TimetablePreviewView
+        android:id="@+id/previewImage"
+        android:layout_width="60dp"
+        android:layout_height="80dp"
+        android:scaleType="fitXY"
+        tools:src="@drawable/bg_timetable" />
+
+    <TextView
+        android:id="@+id/titleTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textSize="10sp"
+        tools:text="2020-2021学年\n第1学期" />
+
+</LinearLayout>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="@layout/main_old_exam_preview_fragment">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="cn.ifafu.ifafu.ui.main.old_theme.exampreview.ExamPreviewItemViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp">
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="4dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@{viewModel.examName}"
+            android:textColor="@color/blue1"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:drawableStartCompat="@drawable/ic_book"
+            app:layout_constraintBottom_toTopOf="@id/time"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="计算机网络" />
+
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@{viewModel.examTime}"
+            android:textColor="@color/blue1"
+            android:textSize="12sp"
+            app:drawableStartCompat="@drawable/ic_time"
+            app:layout_constraintBottom_toTopOf="@id/seat"
+            app:layout_constraintStart_toStartOf="@+id/tv_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_name"
+            tools:text="2020年01月03日(14:30-16:30)" />
+
+        <TextView
+            android:id="@+id/location"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:text="@{viewModel.address}"
+            android:textColor="@color/blue1"
+            android:textSize="12sp"
+            app:drawableStartCompat="@drawable/ic_location"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/time"
+            app:layout_constraintTop_toBottomOf="@+id/time"
+            tools:text="田205" />
+
+        <TextView
+            android:id="@+id/seat"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="80dp"
+            android:gravity="center"
+            android:text="@{viewModel.seatNumber}"
+            android:textColor="@color/blue1"
+            android:textSize="12sp"
+            app:drawableStartCompat="@drawable/ic_seatting"
+            app:layout_constraintBottom_toBottomOf="@+id/location"
+            app:layout_constraintStart_toStartOf="@+id/location"
+            app:layout_constraintTop_toBottomOf="@+id/time"
+            tools:text="9号" />
+
+        <TextView
+            android:id="@+id/timeLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@{viewModel.timeLeft}"
+            android:textColor="@color/blue1"
+            android:textSize="40sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/unit"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="2" />
+
+        <TextView
+            android:id="@+id/unit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@{viewModel.timeLeftUnit}"
+            android:textColor="@color/blue1"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/timeLeft"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/timeLeft"
+            tools:text="天" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

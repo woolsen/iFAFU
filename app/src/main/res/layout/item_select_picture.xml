@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="2dp">
+
+        <cn.ifafu.ifafu.ui.view.CornerImageView
+            android:id="@+id/information_iv_picture"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:o_cornerSize="4dp"
+            tools:src="@tools:sample/avatars" />
+
+        <ImageView
+            android:id="@+id/information_btn_delete"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="end|top"
+            android:contentDescription="@string/information_delete_picture"
+            android:padding="3dp"
+            android:src="@drawable/information_ic_close"
+            app:layout_constraintEnd_toEndOf="@+id/information_iv_picture"
+            app:layout_constraintTop_toTopOf="@+id/information_iv_picture" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

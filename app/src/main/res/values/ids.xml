@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="tag_course" type="id" />
+    <item name="id_node_textview" type="id" />
+    <item name="id_date_textview" type="id" />
+    <item name="id_week_textview" type="id" />
+    <item name="id_time_textview" type="id" />
+
+    <item name="menu_schedule" type="id" />
+    <item name="menu_exam_list" type="id" />
+    <item name="menu_comment" type="id" />
+    <item name="menu_score_list" type="id" />
+    <item name="menu_repair" type="id" />
+    <item name="menu_feedback" type="id" />
+    <item name="menu_information" type="id" />
+    <item name="menu_boya" type="id" />
+    <item name="menu_calendar" type="id" />
+    <item name="menu_setting" type="id" />
+    <item name="menu_electricity" type="id" />
+    <item name="menu_web" type="id" />
+    <item name="menu_elective" type="id" />
+    <item name="menu_upgrade" type="id" />
+    <item name="menu_user_management" type="id" />
+    <item name="menu_about_ifafu" type="id" />
+
+
+    <item name="menu_person_center" type="id" />
+
+</resources>

@@ -1,0 +1,266 @@
+<resources>
+    <string name="app_name">iFAFU</string>
+    <string name="app_name_test">iFAFU测试版</string>
+    <string name="base_on_fafu">基于福建农林大学教务管理系统</string>
+
+    <!--Base-->
+    <string name="net_error">网络错误，请检查网络设置</string>
+    <string name="net_socket_timeout_error">服务器连接超时</string>
+    <string name="net_sql_constraint_error">数据库数据错误</string>
+    <string name="confirm">确认</string>
+    <string name="loading">加载中</string>
+
+    <string name="in_class">上课中</string>
+    <string name="out_class">未上课</string>
+    <string name="node_format">今日：第%1$d/%2$d节</string>
+    <string name="now_class_format">当前：%s</string>
+    <string name="next_class_format">下一节课：%s</string>
+    <string name="now_class">当前：</string>
+    <string name="next_class">下一节课：</string>
+
+    <!--LoginActivity-->
+    <string name="account">学号</string>
+    <string name="password">密码</string>
+    <string name="login_welcome">欢迎登录</string>
+    <string name="login">登录</string>
+    <string name="logging_in">登录中..</string>
+    <string name="login_successful">登录成功</string>
+    <string name="empty_account">账号不能为空！！</string>
+    <string name="empty_password">密码不能为空！！</string>
+    <string name="username">用户名</string>
+    <string name="username_or_email">用户名/邮箱</string>
+    <string name="email">邮箱</string>
+    <string name="sms_code">短信验证码</string>
+    <string name="send_code">发送验证码</string>
+    <string name="send_code_countdown">重发验证码(%ds)</string>
+    <string name="go_register">还没有账号？去注册</string>
+
+    <string name="online">在线</string>
+    <string name="offline">离线</string>
+    <string name="online2">● 在线</string>
+    <string name="offline2">● 离线</string>
+
+    <!--MainActivity-->
+    <string name="back_again">再次按下返回键退出程序</string>
+    <string name="is_last_version">当前已经是最新版了</string>
+    <string name="weather_format">%1$d℃|%2$s</string>
+    <string name="score_term_format">%s学习成绩</string>
+    <string name="exam_term_format">%s学生考试</string>
+
+    <!--SyllabusActivity-->
+    <string name="week_format">第%s周&#160;&#160;本周</string>
+    <string name="week_format_not">第%s周&#160;&#160;非本周</string>
+    <string name="week_format_not_return">第%1$s周&#160;&#160;非本周(长按返回%2$s)</string>
+    <string name="syllabus_refresh_success">课表刷新成功</string>
+
+    <!--ExamActivity-->
+    <string name="exam">考试查询</string>
+    <string name="exam_over">已结束</string>
+    <string name="exam_hint">考试记得带齐证件和文具哦</string>
+    <string name="exam_data_empty">本学期暂无考试信息</string>
+    <string name="contact_copy_to_clipboard">联系方式已复制到剪贴板</string>
+
+    <!--ScoreActivity-->
+    <string name="score">成绩查询</string>
+    <string name="score_cnt">课程数</string>
+    <string name="score_ies">智育分</string>
+    <string name="score_gpa">总绩点：%s</string>
+    <string name="score_refresh_successful">成绩刷新成功</string>ASCII
+    <string name="score_ies_rule">
+        &#160;&#160;&#160;&#160;&#160;&#160;&#160;1.若课程纳入智育分计算且正常通过，计算结果为所有课程加权平均，也就是每一门课程成绩与对应学分的乘积和除以总学分。\n
+        &#160;&#160;&#160;&#160;&#160;&#160;&#160;2.对于未通过课程,  若补考成绩未出，  以期末成绩计算;若补考成绩已出，补考成绩超过60，以60计算，否则以补考成绩计算。\n
+        &#160;&#160;&#160;&#160;&#160;&#160;&#160;3.任意选修课，体育课，缓考，免修,  重修，  补修课程不纳入智育分计算。\n
+        &#160;&#160;&#160;&#160;&#160;&#160;&#160;4.大一第一学期，若有英语2，英语2纳入智育分计算，否则英语1纳入智育分计算;大一第二学期，若有英语3，英语3纳入智育分计算，否则英语2纳入智育分计算;大二第一学期，若有英语4，英语4纳入智育分计算，否则英语3纳入智育分计算，以此类推。\n
+        &#160;&#160;&#160;&#160;&#160;&#160;&#160;5.纳入智育分计算的不及格课程，在依照以上规则计算完毕后，依照不及格课程学分扣除对应智育分。\n
+        &#160;&#160;&#160;&#160;&#160;&#160;&#160;6.补/免修课程，仅英语课程程序课根据第4条规则可对对应免修课程予以识别和排除，其他免/补修课程请您点击智育分下方的“调整免/补修课程”添加，添加入“调整免/补修课程”列表中的课程将不被纳入智育分计算。
+    </string>
+    <string name="score_data_empty">本学期暂无成绩信息</string>
+
+    <string name="comment_1">此评教系统之目的为减少不必要的重复点击操作，不希望因此扰乱教师评教秩序。\n请注意：教师评教对学校维持优秀的教学资源有极其重要的意义，iFAFU希望您以公正的态度来面对此次评教，为了确保一键评教系统不影响教师评教结果，iFAFU仅会帮您完成每个教师的默认评教，默认评教结果为随机一项良好，其余为优秀(相当于提交了默认选项)，之后您可以点击列表中的对应教师修改评价，请您在确定提交您的评价后点击“提交最终评教”，提交后您的评价无法更改！\n若您同意以公正的态度面对此次评教，点击同意使用一键评教功能，否则请点击不同意，退出本页面。</string>
+    <string name="comment_2">已自动完成教师评教！\n注意：为了确保一键评教系统不影响教师评教结果，iFAFU仅帮您完成了每个教师的评教，您可以点击列表中的对应教师修改评价，请您在确定提交您的评价后点击下方“提交最终评教”，提交后您的评价无法更改 ，望知悉！！（若出现漏评的情况，请联系开发者。）</string>
+
+    <!--AboutActivity-->
+    <string name="about_iFAFU">关于iFAFU</string>
+    <string name="app_sub_name">版本号%s</string>
+    <string name="about_1">基于福建农林大学教务管理系统</string>
+    <string name="about_2">官网: https://ifafu.cn</string>
+    <string name="about_3">联系QQ：1535679852(iFAFU)</string>
+    <string name="text_QQ_group">意见反馈</string>
+    <string name="text_weibo">关注微博</string>
+    <string name="text_email">发送邮件</string>
+    <string name="success_copy_email">收件人信息已复制至剪切板</string>
+    <string name="menu_update">检查更新</string>
+    <string name="feedback">反馈问题</string>
+    <string name="menu_logout">切换用户</string>
+    <string name="menu_about">关于应用</string>
+    <string name="menu_setting">软件设置</string>
+
+    <!--SettingActivity-->
+    <string name="title_setting">软件设置</string>
+
+
+    <!--WebActivity-->
+    <string name="title_web_mode">网页模式</string>
+
+    <!--SyllabusItemActivity-->
+    <string name="course_detail">课程详情</string>
+    <string name="course_name">课程名称</string>
+    <string name="course_time">上课时间</string>
+    <string name="course_address">教室</string>
+    <string name="course_teacher">教师</string>
+    <string name="course_weeks">周数</string>
+    <string name="input_course_name">请输入课程名称</string>
+    <string name="select_course_time">请选择上课时间</string>
+    <string name="select_course_week">请选择周数</string>
+    <string name="save_successful">保存成功</string>
+    <string name="delete_successful">删除成功</string>
+
+    <!--ScoreFilterActivity-->
+    <string name="score_filter_hint">选择需要记入智育分的成绩</string>
+    <string name="score_filter_now_ies">当前智育分：%s分</string>
+    <string name="score_filter_title">智育分计算筛选</string>
+    <string name="score_filter_all">全选</string>
+
+    <!--SyllabusSettingActivity-->
+    <string name="title_syllabus_setting">课表设置</string>
+
+    <!--电费模块-->
+    <string name="fafu_elec_title">电费查询</string>
+    <string name="choose_xq">点击选择校区</string>
+    <string name="choose_ld">点击选择楼栋</string>
+    <string name="choose_lc">点击选择楼层</string>
+    <string name="input_room">输入房间号</string>
+    <string name="query_elec">点击查询电费</string>
+    <string name="input_price">输入充值金额</string>
+    <string name="querying">查询中</string>
+    <string name="format_card_balance">校园卡余额：%s元</string>
+    <string name="confirm_pay">确认缴费</string>
+    <string name="hint_sno">请输入学号</string>
+    <string name="xfb_password_hint">密码（默认为身份证后六位）</string>
+    <string name="verify">验证码</string>
+    <string name="announce">服务提供：学付宝</string>
+    <string name="elec_tos_1">电费充值服务由学付宝提供，充值金直接流向学付宝，学付宝App内可查到消费账单</string>
+    <string name="elec_tos_2">电费充值到账有延迟，到账后电费信息更新还有延迟，若太久没到账请联系宿管科（问学付宝充电费为什么还没到账）</string>
+    <string name="elec_tos_3">部分宿舍电费查询显示的宿舍信息与输入宿舍号不同\n此为学付宝问题，可用学付宝查询验证\n电费信息是和学付宝上显示一致的</string>
+
+    <string name="elective">选修学分查询</string>
+
+    <!--Widget-->
+    <string name="refresh_time_format">上次刷新时间：%s</string>
+    <string name="next_course_format">下一节课：%s</string>
+    <string name="next_node_format">第%1$d节 %2$s</string>
+    <string name="click_to_refresh">点击此处刷新</string>
+
+    <string name="customactivityoncrash_error_activity_error_occurred_explanation">错误信息已上传，闪退的同学可以去反馈那提交下联系方式，方便我们定位并解决问题~</string>
+    <string name="customactivityoncrash_error_activity_restart_app">重启app</string>
+    <string name="customactivityoncrash_error_activity_close_app">关闭app</string>
+    <string name="customactivityoncrash_error_activity_error_details">错误详细信息</string>
+    <string name="customactivityoncrash_error_activity_error_details_title">错误详细信息</string>
+    <string name="customactivityoncrash_error_activity_error_details_close">关闭</string>
+    <string name="customactivityoncrash_error_activity_error_details_copy">复制到剪贴板</string>
+    <string name="customactivityoncrash_error_activity_error_details_copied">复制到剪贴板</string>
+    <string name="customactivityoncrash_error_activity_error_details_clipboard_label">错误信息</string>
+    <string name="no_exam_info">暂无待考信息</string>
+    <string name="no_score_info">暂无成绩信息</string>
+    <string name="vip">VIP</string>
+    <string name="empty">空空如也~</string>
+    <string name="more">更多</string>
+    <string name="more_setting">更多设置</string>
+    <string name="submit">提交</string>
+
+    <string name="contact">联系方式</string>
+    <string name="contact_require">* 联系方式:</string>
+    <string name="enter_content">请输入反馈内容</string>
+    <string name="content_required">* 内容描述:</string>
+    <string name="add_course">添加课程</string>
+    <string name="schedule_setting">课表设置</string>
+    <string name="refresh_timetable">刷新课表</string>
+    <string name="score_filter">智育分筛选</string>
+    <string name="refresh">刷新</string>
+    <string name="feedback_short">反馈</string>
+    <string name="back">返回</string>
+
+    <string name="timetable_setting">课表设置</string>
+    <string name="change_background">更换背景</string>
+    <string name="multiple_timetable">多课表</string>
+    <string name="edit_current_week">修改当前周</string>
+    <string name="select_week">周数选择</string>
+    <string name="timetable_manage">管理</string>
+    <string name="retry">重试</string>
+    <string name="about">关于</string>
+    <string name="check_feedback">查看反馈</string>
+    <string name="developer_woolsen">开发者（雾深）：</string>
+    <string name="electricity_hint_query">点击查询电费</string>
+    <string name="electricity_hint_enter_room">输入宿舍号</string>
+
+    <string name="information_about_information">关于信息平台</string>
+    <string name="information_platform">信息平台</string>
+    <string name="information_retry">重试</string>
+    <string name="information_manager">管理</string>
+    <string name="information_key">key</string>
+    <string name="information_sno">学号</string>
+    <string name="information_content">内容</string>
+    <string name="information_upload_information">发布信息</string>
+    <string name="information_contact">联系方式</string>
+    <string name="information_contact_type">联系类型</string>
+    <string name="information_forget_password">忘记密码?</string>
+    <string name="information_login">登录</string>
+    <string name="information_login_information">登录信息平台</string>
+    <string name="information_back">返回</string>
+    <string name="information_register">注册</string>
+    <string name="information_no_login">未登录</string>
+    <string name="information_logout">退出登录</string>
+    <string name="information_delete_picture">删除图片</string>
+    <string name="information_add_picture">添加图片</string>
+    <string name="information_picture_translate_name">查看图片</string>
+    <string name="information_person_center">个人中心</string>
+    <string name="information_delete">删除</string>
+    <string name="information_edit">编辑</string>
+    <string name="information_username">用户名</string>
+    <string name="information_hint_username">用户名（用于登录）</string>
+    <string name="information_password">密码</string>
+    <string name="information_password_confirm">确认密码</string>
+    <string name="information_invite_key">邀请码</string>
+    <string name="information_hint_sno">学号（用于找回用户）</string>
+    <string name="information_confirm_delete">确定删除</string>
+    <string name="feed">投喂</string>
+    <string name="refresh_score">刷新成绩</string>
+    <string name="one_button_comment">一键评教</string>
+    <string name="close">关闭</string>
+    <string name="login_xfb">登录学付宝</string>
+    <string name="information_examine_center">审核中心</string>
+    <string name="information_agree">同意</string>
+    <string name="information_disagree">拒绝</string>
+    <string name="information_examine">审核</string>
+    <string name="show_time">显示时间</string>
+    <string name="boya">校园百事通</string>
+    <string name="edit">编辑</string>
+    <string name="delete">删除</string>
+    <string name="save">保存</string>
+    <string name="goto_timetable">跳转到课表界面</string>
+    <string name="left_menu">侧滑菜单</string>
+    <string name="edit_current_term">修改当前学期</string>
+    <string name="hint_change_password">登录密码修改规则说明：\n1.密码长度为6~16位，至少包含数字、字母、特殊符号中的两类，字母区分大小写\n2.密码不可与账号相同\n3.密码不可以与身份证号后几位相同</string>
+    <string name="read_and_agree">阅读并同意</string>
+    <string name="privacy_policy">《隐私政策》</string>
+    <string name="ifafu_privacy_policy">《iFAFU隐私政策》</string>
+    <string name="confirm_password">确认密码</string>
+
+    <string name="base_loading">加载中</string>
+
+    <string name="electricity_query">电费查询</string>
+    <string name="electricity_card_balance_format">校园卡余额：%s元</string>
+    <string name="electricity_remain">剩余电费</string>
+    <string name="electricity_select_building_hint">点击选择宿舍楼</string>
+    <string name="electricity_building_label">宿舍楼：</string>
+    <string name="electricity_dorm_label">宿舍号：</string>
+    <string name="electricity_refresh">刷新电费</string>
+    <string name="electricity_this_month">本月情况</string>
+    <string name="electricity_footer">每小时仅记录一次相同的记录</string>
+
+
+    <string name="transition_name_score_title">score_title</string>
+    <string name="transition_name_exam_name">exam_title</string>
+    <string name="phone">手机号</string>
+
+</resources>

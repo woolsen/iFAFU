@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="cn.ifafu.ifafu.ui.score.ScoreViewModel" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:transitionName="transition_score_filter">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/tb_score_filter"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/white"
+            android:elevation="4dp"
+            app:menu="@menu/score_filter"
+            app:navigationIcon="@drawable/ic_back"
+            app:title="@string/score_filter_title" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:background="#DDFFFF"
+            android:gravity="center"
+            android:text="@string/score_filter_hint"
+            android:textColor="#1dcbdb"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_now_ies"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:background="#DDFFFF"
+            android:gravity="center"
+            android:textColor="#1dcbdb"
+            android:textSize="12sp"
+            tools:text="当前智育分：91分" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_score_filter"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/score_filter_item" />
+
+    </LinearLayout>
+</layout>

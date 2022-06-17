@@ -1,0 +1,603 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<HTML lang="gb2312">
+
+<HEAD>
+    <title>现代教学管理信息系统</title>
+    <meta content="IE=EmulateIE7" http-equiv="X-UA-Compatible">
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="Content-Language">
+    <meta name="robots" content="all">
+    <meta name="author" content="作者信息">
+    <meta name="Copyright" content="版权信息">
+    <meta name="description" content="站点介绍">
+    <meta name="keywords" content="站点关键词">
+    <LINK rel="icon" type="image/x-icon" href="style/base/favicon.ico">
+    <LINK rel="stylesheet" type="text/css" href="style/base/jw.css" media="all">
+    <LINK rel="stylesheet" type="text/css" href="style/standard/jw.css" media="all">
+    <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+    <style type="text/css">.transparent { BORDER-BOTTOM: indianred 1px solid; POSITION: absolute; BORDER-LEFT: indianred 1px solid; BACKGROUND-COLOR: infobackground; DISPLAY: none; BORDER-TOP: indianred 1px solid; BORDER-RIGHT: indianred 1px solid } #div1 { Z-INDEX: 1; BORDER-BOTTOM: #000099 1px solid; POSITION: absolute; BORDER-LEFT: #000099 1px solid; BACKGROUND-COLOR: #999999; WIDTH: 446px; HEIGHT: 120px; BORDER-TOP: #000099 1px solid; TOP: 91px; BORDER-RIGHT: #000099 1px solid; LEFT: 341px }</style>
+    <script language="javascript">jQuery(function($) {
+        $("#div1").hide();
+        var select_id = "";
+        var txt_id = "";
+        $("#DataGrid1").find("span").click(function() {
+          var span = $(this);
+          var off = $(this).offset();
+          select_id = $(this).parent().eq("0").find("select").attr("id");
+          txt_id = $(this).parent().eq("0").find("input").attr("id");
+
+          if ($(this).parent().parent().parent().find("tr").eq(0).find("td").eq(1).html() == "评价号") {
+            $("#zb").html("指标：" + $(this).parent().parent().find("td").eq(2).html());
+          } else {
+            $("#zb").html("指标：" + $(this).parent().parent().find("td").eq(1).html());
+          }
+
+          $("#div1").css("top", off.top + 15);
+          var ileft = off.left + 20;
+          if ((document.body.offsetWidth - ileft) < 446) {
+            ileft = off.left - 446;
+          }
+
+          $('#RadioButtonList1 input:radio').each(function(index, domEle) {
+            $(this).attr("checked", false);
+          });
+          $("#div1").css("left", ileft);
+          $("#div1").show("show");
+        });
+        $("#RadioButtonList1").change(function() {
+
+          var DropDownListCurrencyNew = document.getElementById(select_id);
+          var j;
+          for (i = 0; i < DropDownListCurrencyNew.options.length; i++) {
+            if (DropDownListCurrencyNew.options[i].text == $(this).find("input[checked]").val()) {
+              DropDownListCurrencyNew.options[i].selected = true;
+              j = i;
+            }
+          }
+          $("#" + txt_id).val($(this).find("input[checked]").val() + "@" + j.toString());
+          $("#div1").fadeOut("slow");
+        });
+        $("#span2").click(function() {
+          $("#div1").fadeOut("slow");
+        })
+
+      });
+
+      function Keykz() {
+        if (event.keyCode == 9) {
+          alert('对不起,禁止使用此功能.') return false;
+        }
+      }
+
+      var x
+      function getvalue() {
+        x = document.getElementById("TextBox1").value
+
+      }
+
+      function HidenTj() {
+
+        //alert(x);
+        var obj = document.getElementById("Button1");
+
+        if (x > 0) {
+          x = x - 1;
+          obj.value = x;
+          obj.style.width = "60"
+          //obj.style.color="#FF0000";
+          obj.disabled = true;
+          setTimeout("HidenTj()", 1000);
+          return;
+        } else {
+          obj.disabled = false;
+          obj.style.width = "60"obj.value = "保  存"
+        }
+      }
+      //统计总分by djf
+      function SumZpf(col) {　　　 //评教师table
+        var objTable = document.getElementById("Datagrid1");
+        //总行数
+        var rowlength = objTable.rows.length;
+        //总列数
+        var collength = objTable.rows[0].cells.length;
+        //总评分
+        var intZpf = 0.0;
+        var currTr, i, ddl, lbl, tempNum, lastNum;　
+        for (i = 1; i < rowlength; i++) {　 //当前行
+          currTr = objTable.rows[i];
+          //评分下拉框
+          //alert(currTr.cells[col-1].innerText);
+          ddl = currTr.cells[col - 1].firstChild;
+          lbl = currTr.cells[col - 1].getElementsByTagName("span")[0];
+          if (ddl.options[ddl.selectedIndex].value != '') {
+            tempNum = parseFloat('0' + ddl.options[ddl.selectedIndex].value) * parseFloat('0' + currTr.cells[collength - 1].innerText);
+            lbl.innerText = Math.round(tempNum * 1000) / 1000;
+          } else {
+            tempNum = 0.0;
+            lbl.innerText = "";
+          }
+          //计算总评分
+          intZpf = intZpf + tempNum;
+          if ((i == rowlength - 1) && (tempNum != 0.0)) {
+            lastNum = Math.round(tempNum * 1000) / 1000
+          }　
+          else {
+            lastNum = ""
+          }
+
+        }
+        objTable.rows[rowlength - 1].cells[col - 1].getElementsByTagName("span")[0].innerText = lastNum + "  总分：" + Math.round(intZpf * 1000) / 1000;
+      }
+
+      function NumCheck(obj) {
+        var reg1 = /^(([1-9]\d*)|0)(\.\d{1,2})?$/;
+        var str = obj.value;
+
+        var r1 = str.match(reg1);
+        if (str != "") {
+          if (r1 == null || parseFloat(str) > 100) {
+            alert("总体印象分必须为小于等于100的数字,且小数点位数不能超过2位！") obj.value = "";
+            obj.focus();
+            return false;
+          }
+        }
+        return true;
+      }
+      function Hide() {
+        document.getElementById("Popup").style.display = "none";
+      }
+      function show(evt, str_xx) {
+        xm = str_xx;
+        if (navigator.appName.indexOf("Explorer") > -1) {
+          document.getElementById("td1").innerText = "" + xm;
+        } else {
+          document.getElementById("td1").textContent = "" + xm;
+        }
+        //document.getElementById("td2").innerText="" + str_jxb;
+        evt = evt ? evt: (window.event ? window.event: null);
+        x = evt.clientX + "px";
+        y = evt.clientY + "px";
+        document.getElementById("Popup").style.display = "block";
+        document.getElementById("Popup").style.left = x;
+        document.getElementById("Popup").style.top = y;
+      }</script>
+    <style>.datelist TD { WHITE-SPACE: nowrap } .FFF { WIDTH: 800px; WORD-WRAP: break-word; OVERFLOW: hidden; WORD-BREAK: break-all } .pjnr TD { WORD-WRAP: normal; WHITE-SPACE: nowrap; WORD-BREAK: keep-all }</style></HEAD>
+
+<BODY onload="getvalue();HidenTj();">
+<form name="Form1" method="post" action="xsjxpj.aspx?xkkh=(2020-2021-1)-0702003-D030056-1&amp;xh=196732044&amp;gnmkdm=N12141" id="Form1" onkeydown="return Keykz() ">
+    <input type="hidden" name="__EVENTTARGET" value="" />
+    <input type="hidden" name="__EVENTARGUMENT" value="" />
+    <input type="hidden" name="__VIEWSTATE" value="dDwtMTE0NzYxMzU1Nzt0PHA8bDxYc2p4cGpmcztwampzO3hzanhwal9wanh4a3pfenM7eHNqeHBqX3BqeHhrejtwamJzO3hzanhwamtzc2o7c3RyX3RhYmxlO3huO3hxOz47bDwxO0QwMzAwNTY7MDswOzA7XGU7eHNwZmJfMjAyMDIwMjExOzIwMjAyMDIxOzE7Pj47bDxpPDA+Oz47bDx0PDtsPGk8Mz47aTwxOT47aTwyMT47aTwyMz47aTwyNT47aTwyNj47aTwzOD47aTw0MD47PjtsPHQ8dDxwPHA8bDxEYXRhVGV4dEZpZWxkO0RhdGFWYWx1ZUZpZWxkOz47bDxrY3p3bWM7eGtraDs+Pjs+O3Q8aTw5PjtAPOWvvOa4uOWtpjvmsp/pgJrnrqHnkIY75Z+656GA5Lya6K6hMTvml4XmuLjnu4/mtY7lraY75q+b5rO95Lic5oCd5oOz5ZKM5Lit5Zu954m56Imy56S+5Lya5Li75LmJ55CG6K665L2T57O75qaC6K66O+W4guWcuuiQpemUgDvkvZPogrIz77yI6LeG5ouz6YGT77yJO+W9ouWKv+S4juaUv+etljvlrabmnK/oi7Hor60xOz47QDwoMjAyMC0yMDIxLTEpLTA3MDIwMDMtRDAzMDA1Ni0xOygyMDIwLTIwMjEtMSktMDcxMjAwNi1EMDMwMDQ5LTE7KDIwMjAtMjAyMS0xKS0wNzEyMDA1LUQwMjAzNDQtMTsoMjAyMC0yMDIxLTEpLTA3MDIwMDItRDAzMDA0Ny0xOygyMDIwLTIwMjEtMSktOTkwMTEwOC1EMDkwMTg5LTM7KDIwMjAtMjAyMS0xKS0wNzEyMDA0LUQwMjAwMjMtMTsoMjAyMC0yMDIxLTEpLTMxMy1DMDMwMDIwLTE7KDIwMjAtMjAyMS0xKS05OTAxMTczLTAwMDAwMDAtMzA7KDIwMjAtMjAyMS0xKS05OTAxMTUwLVcwNzAxMDAtMTs+PjtsPGk8MD47Pj47Oz47dDxwPGw8VmlzaWJsZTs+O2w8bzx0Pjs+PjtsPGk8MD47PjtsPHQ8O2w8aTwzPjs+O2w8dDxAMDxwPHA8bDxXaWR0aDtQYWdlQ291bnQ7XyFJdGVtQ291bnQ7XyFEYXRhU291cmNlSXRlbUNvdW50O0RhdGFLZXlzO18hU0I7PjtsPDE8MTAwJT47aTwxPjtpPDE3PjtpPDE3PjtsPD47aTwyNTY+Oz4+Oz47QDA8QDA8cDxsPFZpc2libGU7PjtsPG88dD47Pj47Ozs7Pjs7O0AwPHA8bDxWaXNpYmxlO0hlYWRlclRleHQ7Rm9vdGVyVGV4dDs+O2w8bzx0PjvlvKDojaPpnJ47RDAzMDA1Njs+Pjs7Ozs+O0AwPHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs7Oz47QDA8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Ozs7PjtAMDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Ozs+O0AwPHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs7Oz47QDA8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Ozs7PjtAMDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Ozs+O0AwPHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs7Oz47QDA8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Ozs7PjtAMDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Ozs+O0AwPHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs7Oz47QDA8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Ozs7PjtAMDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Ozs+O0AwPHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs7Oz47QDA8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Ozs7PjtAMDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Ozs+O0AwPHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs7Oz47QDA8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Ozs7PjtAMDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Ozs+O0AwPHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs7Oz47QDA8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Ozs7PjtAMDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Ozs+O0AwPHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs7Oz47QDA8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Ozs7PjtAMDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Ozs+O0AwPHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs7Oz47QDA8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Ozs7PjtAMDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Ozs+O0AwPHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs7Oz47QDA8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Ozs7Pjs7Pjs7Ozs7Ozs7Oz47bDxpPDA+Oz47bDx0PDtsPGk8MT47aTwyPjtpPDM+O2k8ND47aTw1PjtpPDY+O2k8Nz47aTw4PjtpPDk+O2k8MTA+O2k8MTE+O2k8MTI+O2k8MTM+O2k8MTQ+O2k8MTU+O2k8MTY+O2k8MTc+Oz47bDx0PDtsPGk8MD47aTwxPjtpPDI+O2k8Mz47aTw0PjtpPDU+O2k8Nj47aTw3PjtpPDg+O2k8OT47aTwxMD47aTwxMT47aTwxMj47aTwxMz47aTwxND47aTwxNT47aTwxNj47aTwxNz47aTwxOD47aTwxOT47aTwyMD47aTwyMT47aTwyMj47aTwyMz47aTwyND47aTwyNT47aTwyNj47aTwyNz47aTwyOD47aTwyOT47aTwzMD47aTwzMT47aTwzMj47aTwzMz47PjtsPHQ8cDxwPGw8VGV4dDs+O2w85pWZ5a2m5oCB5bqmOz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDwxOz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDzlh4bml7bkuIrkuIvor77vvIzmsqHmnInpmo/mhI/osIPlgZzor77lkozor77kuIrkvb/nlKjmiYvmnLrnjrDosaHjgII7Pj47Pjs7Pjt0PDtsPGk8MT47aTw1PjtpPDc+Oz47bDx0PHQ8O3A8bDxpPDA+O2k8MT47aTwyPjtpPDM+O2k8ND47aTw1Pjs+O2w8cDxcZTtcZT47cDzkvJjnp4A75LyY56eAPjtwPOiJr+WlvTvoia/lpb0+O3A85Lit562JO+S4reetiT47cDzlkIjmoLw75ZCI5qC8PjtwPOS4jeWQiOagvDvkuI3lkIjmoLw+Oz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDxcZTs+Pjs+Ozs+O3Q8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PHA8cDxsPFRleHQ7PjtsPDAuMDU7Pj47Pjs7Pjs+Pjt0PDtsPGk8MD47aTwxPjtpPDI+O2k8Mz47aTw0PjtpPDU+O2k8Nj47aTw3PjtpPDg+O2k8OT47aTwxMD47aTwxMT47aTwxMj47aTwxMz47aTwxND47aTwxNT47aTwxNj47aTwxNz47aTwxOD47aTwxOT47aTwyMD47aTwyMT47aTwyMj47aTwyMz47aTwyND47aTwyNT47aTwyNj47aTwyNz47aTwyOD47aTwyOT47aTwzMD47aTwzMT47aTwzMj47aTwzMz47PjtsPHQ8cDxwPGw8VGV4dDs+O2w85pWZ5a2m5oCB5bqmOz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDwyOz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDzkuKXmoLzogIPli6TvvIzmnInmlYjnrqHnkIbor77loILnuqrlvovjgII7Pj47Pjs7Pjt0PDtsPGk8MT47aTw1PjtpPDc+Oz47bDx0PHQ8O3A8bDxpPDA+O2k8MT47aTwyPjtpPDM+O2k8ND47aTw1Pjs+O2w8cDxcZTtcZT47cDzkvJjnp4A75LyY56eAPjtwPOiJr+WlvTvoia/lpb0+O3A85Lit562JO+S4reetiT47cDzlkIjmoLw75ZCI5qC8PjtwPOS4jeWQiOagvDvkuI3lkIjmoLw+Oz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDxcZTs+Pjs+Ozs+O3Q8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PHA8cDxsPFRleHQ7PjtsPDAuMDU7Pj47Pjs7Pjs+Pjt0PDtsPGk8MD47aTwxPjtpPDI+O2k8Mz47aTw0PjtpPDU+O2k8Nj47aTw3PjtpPDg+O2k8OT47aTwxMD47aTwxMT47aTwxMj47aTwxMz47aTwxND47aTwxNT47aTwxNj47aTwxNz47aTwxOD47aTwxOT47aTwyMD47aTwyMT47aTwyMj47aTwyMz47aTwyND47aTwyNT47aTwyNj47aTwyNz47aTwyOD47aTwyOT47aTwzMD47aTwzMT47aTwzMj47aTwzMz47PjtsPHQ8cDxwPGw8VGV4dDs+O2w85pWZ5a2m5oCB5bqmOz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDwzOz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDzogIHluIjlubPnrYnlnLDlr7nlvoXmr4/kuIDkvY3lrabnlJ/jgII7Pj47Pjs7Pjt0PDtsPGk8MT47aTw1PjtpPDc+Oz47bDx0PHQ8O3A8bDxpPDA+O2k8MT47aTwyPjtpPDM+O2k8ND47aTw1Pjs+O2w8cDxcZTtcZT47cDzkvJjnp4A75LyY56eAPjtwPOiJr+WlvTvoia/lpb0+O3A85Lit562JO+S4reetiT47cDzlkIjmoLw75ZCI5qC8PjtwPOS4jeWQiOagvDvkuI3lkIjmoLw+Oz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDxcZTs+Pjs+Ozs+O3Q8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PHA8cDxsPFRleHQ7PjtsPDAuMDU7Pj47Pjs7Pjs+Pjt0PDtsPGk8MD47aTwxPjtpPDI+O2k8Mz47aTw0PjtpPDU+O2k8Nj47aTw3PjtpPDg+O2k8OT47aTwxMD47aTwxMT47aTwxMj47aTwxMz47aTwxND47aTwxNT47aTwxNj47aTwxNz47aTwxOD47aTwxOT47aTwyMD47aTwyMT47aTwyMj47aTwyMz47aTwyND47aTwyNT47aTwyNj47aTwyNz47aTwyOD47aTwyOT47aTwzMD47aTwzMT47aTwzMj47aTwzMz47PjtsPHQ8cDxwPGw8VGV4dDs+O2w85pWZ5a2m5oCB5bqmOz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDw0Oz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDzogIHluIjkuLvliqjkuI7lrabnlJ/kuqTmtYHvvIzph43op4blrabnlJ/lr7nmlZnlrabnmoTmhI/op4Hlj43ppojjgII7Pj47Pjs7Pjt0PDtsPGk8MT47aTw1PjtpPDc+Oz47bDx0PHQ8O3A8bDxpPDA+O2k8MT47aTwyPjtpPDM+O2k8ND47aTw1Pjs+O2w8cDxcZTtcZT47cDzkvJjnp4A75LyY56eAPjtwPOiJr+WlvTvoia/lpb0+O3A85Lit562JO+S4reetiT47cDzlkIjmoLw75ZCI5qC8PjtwPOS4jeWQiOagvDvkuI3lkIjmoLw+Oz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDxcZTs+Pjs+Ozs+O3Q8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PHA8cDxsPFRleHQ7PjtsPDAuMDU7Pj47Pjs7Pjs+Pjt0PDtsPGk8MD47aTwxPjtpPDI+O2k8Mz47aTw0PjtpPDU+O2k8Nj47aTw3PjtpPDg+O2k8OT47aTwxMD47aTwxMT47aTwxMj47aTwxMz47aTwxND47aTwxNT47aTwxNj47aTwxNz47aTwxOD47aTwxOT47aTwyMD47aTwyMT47aTwyMj47aTwyMz47aTwyND47aTwyNT47aTwyNj47aTwyNz47aTwyOD47aTwyOT47aTwzMD47aTwzMT47aTwzMj47aTwzMz47PjtsPHQ8cDxwPGw8VGV4dDs+O2w85pWZ5a2m6L+H56iLOz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDw1Oz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDzogIHluIjlnKjor77nqIvlvIDlp4vml7bmmI7noa7lnLDlkYror4nlrabnlJ/mnKzor77nqIvnmoTln7nlhbvnm67moIfjgIHlrabkuaDopoHmsYLku6Xlj4ror77nqIvogIPmoLjmlrnms5XjgII7Pj47Pjs7Pjt0PDtsPGk8MT47aTw1PjtpPDc+Oz47bDx0PHQ8O3A8bDxpPDA+O2k8MT47aTwyPjtpPDM+O2k8ND47aTw1Pjs+O2w8cDxcZTtcZT47cDzkvJjnp4A75LyY56eAPjtwPOiJr+WlvTvoia/lpb0+O3A85Lit562JO+S4reetiT47cDzlkIjmoLw75ZCI5qC8PjtwPOS4jeWQiOagvDvkuI3lkIjmoLw+Oz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDxcZTs+Pjs+Ozs+O3Q8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PHA8cDxsPFRleHQ7PjtsPDAuMDU7Pj47Pjs7Pjs+Pjt0PDtsPGk8MD47aTwxPjtpPDI+O2k8Mz47aTw0PjtpPDU+O2k8Nj47aTw3PjtpPDg+O2k8OT47aTwxMD47aTwxMT47aTwxMj47aTwxMz47aTwxND47aTwxNT47aTwxNj47aTwxNz47aTwxOD47aTwxOT47aTwyMD47aTwyMT47aTwyMj47aTwyMz47aTwyND47aTwyNT47aTwyNj47aTwyNz47aTwyOD47aTwyOT47aTwzMD47aTwzMT47aTwzMj47aTwzMz47PjtsPHQ8cDxwPGw8VGV4dDs+O2w85pWZ5a2m6L+H56iLOz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDw2Oz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDzlpIfor77pnZ7luLjlhYXliIbvvIznhp/mgonmjojor77lhoXlrrnvvIzog73lpJ/ohLHnqL/orrLmjojjgII7Pj47Pjs7Pjt0PDtsPGk8MT47aTw1PjtpPDc+Oz47bDx0PHQ8O3A8bDxpPDA+O2k8MT47aTwyPjtpPDM+O2k8ND47aTw1Pjs+O2w8cDxcZTtcZT47cDzkvJjnp4A75LyY56eAPjtwPOiJr+WlvTvoia/lpb0+O3A85Lit562JO+S4reetiT47cDzlkIjmoLw75ZCI5qC8PjtwPOS4jeWQiOagvDvkuI3lkIjmoLw+Oz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDxcZTs+Pjs+Ozs+O3Q8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PHA8cDxsPFRleHQ7PjtsPDAuMDc7Pj47Pjs7Pjs+Pjt0PDtsPGk8MD47aTwxPjtpPDI+O2k8Mz47aTw0PjtpPDU+O2k8Nj47aTw3PjtpPDg+O2k8OT47aTwxMD47aTwxMT47aTwxMj47aTwxMz47aTwxND47aTwxNT47aTwxNj47aTwxNz47aTwxOD47aTwxOT47aTwyMD47aTwyMT47aTwyMj47aTwyMz47aTwyND47aTwyNT47aTwyNj47aTwyNz47aTwyOD47aTwyOT47aTwzMD47aTwzMT47aTwzMj47aTwzMz47PjtsPHQ8cDxwPGw8VGV4dDs+O2w85pWZ5a2m6L+H56iLOz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDw3Oz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDzogIHluIjorrLor77mnInmnaHnkIbvvIzlj6Ppvb/muIXmmbDvvIzlr4zmnInmv4Dmg4XvvIzorrLor77mlrnlvI/og73lp4vnu4jlkLjlvJXlrabnlJ/nmoTlhbTotqPlkozms6jmhI/lipvjgII7Pj47Pjs7Pjt0PDtsPGk8MT47aTw1PjtpPDc+Oz47bDx0PHQ8O3A8bDxpPDA+O2k8MT47aTwyPjtpPDM+O2k8ND47aTw1Pjs+O2w8cDxcZTtcZT47cDzkvJjnp4A75LyY56eAPjtwPOiJr+WlvTvoia/lpb0+O3A85Lit562JO+S4reetiT47cDzlkIjmoLw75ZCI5qC8PjtwPOS4jeWQiOagvDvkuI3lkIjmoLw+Oz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDxcZTs+Pjs+Ozs+O3Q8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PHA8cDxsPFRleHQ7PjtsPDAuMDY7Pj47Pjs7Pjs+Pjt0PDtsPGk8MD47aTwxPjtpPDI+O2k8Mz47aTw0PjtpPDU+O2k8Nj47aTw3PjtpPDg+O2k8OT47aTwxMD47aTwxMT47aTwxMj47aTwxMz47aTwxND47aTwxNT47aTwxNj47aTwxNz47aTwxOD47aTwxOT47aTwyMD47aTwyMT47aTwyMj47aTwyMz47aTwyND47aTwyNT47aTwyNj47aTwyNz47aTwyOD47aTwyOT47aTwzMD47aTwzMT47aTwzMj47aTwzMz47PjtsPHQ8cDxwPGw8VGV4dDs+O2w85pWZ5a2m6L+H56iLOz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDw4Oz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDzlpJrlqpLkvZPor77ku7borr7orqHmuIXmmbDnm7Top4LvvIzmnb/kuablt6XmlbTop4TojIPvvIzorrLop6PjgIHmnb/kuablkozor77ku7bmvJTnpLrnu5PlkIjlvpflvZPjgII7Pj47Pjs7Pjt0PDtsPGk8MT47aTw1PjtpPDc+Oz47bDx0PHQ8O3A8bDxpPDA+O2k8MT47aTwyPjtpPDM+O2k8ND47aTw1Pjs+O2w8cDxcZTtcZT47cDzkvJjnp4A75LyY56eAPjtwPOiJr+WlvTvoia/lpb0+O3A85Lit562JO+S4reetiT47cDzlkIjmoLw75ZCI5qC8PjtwPOS4jeWQiOagvDvkuI3lkIjmoLw+Oz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDxcZTs+Pjs+Ozs+O3Q8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PHA8cDxsPFRleHQ7PjtsPDAuMDY7Pj47Pjs7Pjs+Pjt0PDtsPGk8MD47aTwxPjtpPDI+O2k8Mz47aTw0PjtpPDU+O2k8Nj47aTw3PjtpPDg+O2k8OT47aTwxMD47aTwxMT47aTwxMj47aTwxMz47aTwxND47aTwxNT47aTwxNj47aTwxNz47aTwxOD47aTwxOT47aTwyMD47aTwyMT47aTwyMj47aTwyMz47aTwyND47aTwyNT47aTwyNj47aTwyNz47aTwyOD47aTwyOT47aTwzMD47aTwzMT47aTwzMj47aTwzMz47PjtsPHQ8cDxwPGw8VGV4dDs+O2w85pWZ5a2m6L+H56iLOz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDw5Oz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDzmjojor77og73lpJ/mib/kuIrlkK/kuIvvvIzmjInnq6DoioLpgILlvZPlvZLnurPvvIzlubbmnInpgILlvZPnmoTor77lkI7opoHmsYLjgII7Pj47Pjs7Pjt0PDtsPGk8MT47aTw1PjtpPDc+Oz47bDx0PHQ8O3A8bDxpPDA+O2k8MT47aTwyPjtpPDM+O2k8ND47aTw1Pjs+O2w8cDxcZTtcZT47cDzkvJjnp4A75LyY56eAPjtwPOiJr+WlvTvoia/lpb0+O3A85Lit562JO+S4reetiT47cDzlkIjmoLw75ZCI5qC8PjtwPOS4jeWQiOagvDvkuI3lkIjmoLw+Oz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDxcZTs+Pjs+Ozs+O3Q8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PHA8cDxsPFRleHQ7PjtsPDAuMDY7Pj47Pjs7Pjs+Pjt0PDtsPGk8MD47aTwxPjtpPDI+O2k8Mz47aTw0PjtpPDU+O2k8Nj47aTw3PjtpPDg+O2k8OT47aTwxMD47aTwxMT47aTwxMj47aTwxMz47aTwxND47aTwxNT47aTwxNj47aTwxNz47aTwxOD47aTwxOT47aTwyMD47aTwyMT47aTwyMj47aTwyMz47aTwyND47aTwyNT47aTwyNj47aTwyNz47aTwyOD47aTwyOT47aTwzMD47aTwzMT47aTwzMj47aTwzMz47PjtsPHQ8cDxwPGw8VGV4dDs+O2w85pWZ5a2m6L+H56iLOz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDwxMDs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w85o6I6K++5pe26YeN54K556qB5Ye677yM6Zq+54K55YiG5p6Q6YCP5b2744CCOz4+Oz47Oz47dDw7bDxpPDE+O2k8NT47aTw3Pjs+O2w8dDx0PDtwPGw8aTwwPjtpPDE+O2k8Mj47aTwzPjtpPDQ+O2k8NT47PjtsPHA8XGU7XGU+O3A85LyY56eAO+S8mOengD47cDzoia/lpb076Imv5aW9PjtwPOS4reetiTvkuK3nrYk+O3A85ZCI5qC8O+WQiOagvD47cDzkuI3lkIjmoLw75LiN5ZCI5qC8Pjs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8XGU7Pj47Pjs7Pjt0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDxwPHA8bDxUZXh0Oz47bDwwLjA4Oz4+Oz47Oz47Pj47dDw7bDxpPDA+O2k8MT47aTwyPjtpPDM+O2k8ND47aTw1PjtpPDY+O2k8Nz47aTw4PjtpPDk+O2k8MTA+O2k8MTE+O2k8MTI+O2k8MTM+O2k8MTQ+O2k8MTU+O2k8MTY+O2k8MTc+O2k8MTg+O2k8MTk+O2k8MjA+O2k8MjE+O2k8MjI+O2k8MjM+O2k8MjQ+O2k8MjU+O2k8MjY+O2k8Mjc+O2k8Mjg+O2k8Mjk+O2k8MzA+O2k8MzE+O2k8MzI+O2k8MzM+Oz47bDx0PHA8cDxsPFRleHQ7PjtsPOaVmeWtpui/h+eoizs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8MTE7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPOaOiOivvuWGheWuueS4sOWvjO+8jOS4jeeFp+acrOWuo+enke+8jOazqOmHjeeQhuiuuuiBlOezu+WunumZheW5tumAguW9k+WJjeayv+aLk+WxleOAgjs+Pjs+Ozs+O3Q8O2w8aTwxPjtpPDU+O2k8Nz47PjtsPHQ8dDw7cDxsPGk8MD47aTwxPjtpPDI+O2k8Mz47aTw0PjtpPDU+Oz47bDxwPFxlO1xlPjtwPOS8mOengDvkvJjnp4A+O3A86Imv5aW9O+iJr+WlvT47cDzkuK3nrYk75Lit562JPjtwPOWQiOagvDvlkIjmoLw+O3A85LiN5ZCI5qC8O+S4jeWQiOagvD47Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPFxlOz4+Oz47Oz47dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8cDxwPGw8VGV4dDs+O2w8MC4wNzs+Pjs+Ozs+Oz4+O3Q8O2w8aTwwPjtpPDE+O2k8Mj47aTwzPjtpPDQ+O2k8NT47aTw2PjtpPDc+O2k8OD47aTw5PjtpPDEwPjtpPDExPjtpPDEyPjtpPDEzPjtpPDE0PjtpPDE1PjtpPDE2PjtpPDE3PjtpPDE4PjtpPDE5PjtpPDIwPjtpPDIxPjtpPDIyPjtpPDIzPjtpPDI0PjtpPDI1PjtpPDI2PjtpPDI3PjtpPDI4PjtpPDI5PjtpPDMwPjtpPDMxPjtpPDMyPjtpPDMzPjs+O2w8dDxwPHA8bDxUZXh0Oz47bDzmlZnlrabov4fnqIs7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPDEyOz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDzogIHluIjpvJPlirHlrabnlJ/mj5Dlh7rpl67popjvvIzlubbog73lj4rml7bnu5nkuojop6PnrZTjgII7Pj47Pjs7Pjt0PDtsPGk8MT47aTw1PjtpPDc+Oz47bDx0PHQ8O3A8bDxpPDA+O2k8MT47aTwyPjtpPDM+O2k8ND47aTw1Pjs+O2w8cDxcZTtcZT47cDzkvJjnp4A75LyY56eAPjtwPOiJr+WlvTvoia/lpb0+O3A85Lit562JO+S4reetiT47cDzlkIjmoLw75ZCI5qC8PjtwPOS4jeWQiOagvDvkuI3lkIjmoLw+Oz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDxcZTs+Pjs+Ozs+O3Q8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PHA8cDxsPFRleHQ7PjtsPDAuMDU7Pj47Pjs7Pjs+Pjt0PDtsPGk8MD47aTwxPjtpPDI+O2k8Mz47aTw0PjtpPDU+O2k8Nj47aTw3PjtpPDg+O2k8OT47aTwxMD47aTwxMT47aTwxMj47aTwxMz47aTwxND47aTwxNT47aTwxNj47aTwxNz47aTwxOD47aTwxOT47aTwyMD47aTwyMT47aTwyMj47aTwyMz47aTwyND47aTwyNT47aTwyNj47aTwyNz47aTwyOD47aTwyOT47aTwzMD47aTwzMT47aTwzMj47aTwzMz47PjtsPHQ8cDxwPGw8VGV4dDs+O2w85pWZ5a2m6L+H56iLOz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDwxMzs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w85LiK6K++6IO95aSf5ZCI55CG5pyJ5pWI5a6J5o6S6K++5aCC5pe26Ze044CCOz4+Oz47Oz47dDw7bDxpPDE+O2k8NT47aTw3Pjs+O2w8dDx0PDtwPGw8aTwwPjtpPDE+O2k8Mj47aTwzPjtpPDQ+O2k8NT47PjtsPHA8XGU7XGU+O3A85LyY56eAO+S8mOengD47cDzoia/lpb076Imv5aW9PjtwPOS4reetiTvkuK3nrYk+O3A85ZCI5qC8O+WQiOagvD47cDzkuI3lkIjmoLw75LiN5ZCI5qC8Pjs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8XGU7Pj47Pjs7Pjt0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDxwPHA8bDxUZXh0Oz47bDwwLjA1Oz4+Oz47Oz47Pj47dDw7bDxpPDA+O2k8MT47aTwyPjtpPDM+O2k8ND47aTw1PjtpPDY+O2k8Nz47aTw4PjtpPDk+O2k8MTA+O2k8MTE+O2k8MTI+O2k8MTM+O2k8MTQ+O2k8MTU+O2k8MTY+O2k8MTc+O2k8MTg+O2k8MTk+O2k8MjA+O2k8MjE+O2k8MjI+O2k8MjM+O2k8MjQ+O2k8MjU+O2k8MjY+O2k8Mjc+O2k8Mjg+O2k8Mjk+O2k8MzA+O2k8MzE+O2k8MzI+O2k8MzM+Oz47bDx0PHA8cDxsPFRleHQ7PjtsPOaVmeWtpui/h+eoizs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8MTQ7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPOiAgeW4iOWPiuaXtuaJueaUueS9nOS4muW5tue7meS6iOWPjemmiOOAgjs+Pjs+Ozs+O3Q8O2w8aTwxPjtpPDU+O2k8Nz47PjtsPHQ8dDw7cDxsPGk8MD47aTwxPjtpPDI+O2k8Mz47aTw0PjtpPDU+Oz47bDxwPFxlO1xlPjtwPOS8mOengDvkvJjnp4A+O3A86Imv5aW9O+iJr+WlvT47cDzkuK3nrYk75Lit562JPjtwPOWQiOagvDvlkIjmoLw+O3A85LiN5ZCI5qC8O+S4jeWQiOagvD47Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPFxlOz4+Oz47Oz47dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8cDxwPGw8VGV4dDs+O2w8MC4wNTs+Pjs+Ozs+Oz4+O3Q8O2w8aTwwPjtpPDE+O2k8Mj47aTwzPjtpPDQ+O2k8NT47aTw2PjtpPDc+O2k8OD47aTw5PjtpPDEwPjtpPDExPjtpPDEyPjtpPDEzPjtpPDE0PjtpPDE1PjtpPDE2PjtpPDE3PjtpPDE4PjtpPDE5PjtpPDIwPjtpPDIxPjtpPDIyPjtpPDIzPjtpPDI0PjtpPDI1PjtpPDI2PjtpPDI3PjtpPDI4PjtpPDI5PjtpPDMwPjtpPDMxPjtpPDMyPjtpPDMzPjs+O2w8dDxwPHA8bDxUZXh0Oz47bDzmlZnlrabmlYjmnpw7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPDE1Oz4+Oz47Oz47dDxwPHA8bDxUZXh0Oz47bDzmlZnluIjnmoTorrLop6PjgIHmj5Dpl67og73mnInmlYjlvJXlr7zmiJHku6zni6znq4vmgJ3ogIMs5o+Q6auY5YiG5p6Q6Kej5Yaz6Zeu6aKY55qE6IO95Yqb44CCOz4+Oz47Oz47dDw7bDxpPDE+O2k8NT47aTw3Pjs+O2w8dDx0PDtwPGw8aTwwPjtpPDE+O2k8Mj47aTwzPjtpPDQ+O2k8NT47PjtsPHA8XGU7XGU+O3A85LyY56eAO+S8mOengD47cDzoia/lpb076Imv5aW9PjtwPOS4reetiTvkuK3nrYk+O3A85ZCI5qC8O+WQiOagvD47cDzkuI3lkIjmoLw75LiN5ZCI5qC8Pjs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8XGU7Pj47Pjs7Pjt0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDxwPHA8bDxUZXh0Oz47bDwwLjA3Oz4+Oz47Oz47Pj47dDw7bDxpPDA+O2k8MT47aTwyPjtpPDM+O2k8ND47aTw1PjtpPDY+O2k8Nz47aTw4PjtpPDk+O2k8MTA+O2k8MTE+O2k8MTI+O2k8MTM+O2k8MTQ+O2k8MTU+O2k8MTY+O2k8MTc+O2k8MTg+O2k8MTk+O2k8MjA+O2k8MjE+O2k8MjI+O2k8MjM+O2k8MjQ+O2k8MjU+O2k8MjY+O2k8Mjc+O2k8Mjg+O2k8Mjk+O2k8MzA+O2k8MzE+O2k8MzI+O2k8MzM+Oz47bDx0PHA8cDxsPFRleHQ7PjtsPOaVmeWtpuaViOaenDs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8MTY7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPOaVmeW4iOS4jeS7heaVmeaOiOaIkeS7rOefpeivhiwg6L+Y5Lyg5o6I5a2m5Lmg5pa55rOV44CCOz4+Oz47Oz47dDw7bDxpPDE+O2k8NT47aTw3Pjs+O2w8dDx0PDtwPGw8aTwwPjtpPDE+O2k8Mj47aTwzPjtpPDQ+O2k8NT47PjtsPHA8XGU7XGU+O3A85LyY56eAO+S8mOengD47cDzoia/lpb076Imv5aW9PjtwPOS4reetiTvkuK3nrYk+O3A85ZCI5qC8O+WQiOagvD47cDzkuI3lkIjmoLw75LiN5ZCI5qC8Pjs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8XGU7Pj47Pjs7Pjt0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDxwPHA8bDxUZXh0Oz47bDwwLjA3Oz4+Oz47Oz47Pj47dDw7bDxpPDA+O2k8MT47aTwyPjtpPDM+O2k8ND47aTw1PjtpPDY+O2k8Nz47aTw4PjtpPDk+O2k8MTA+O2k8MTE+O2k8MTI+O2k8MTM+O2k8MTQ+O2k8MTU+O2k8MTY+O2k8MTc+O2k8MTg+O2k8MTk+O2k8MjA+O2k8MjE+O2k8MjI+O2k8MjM+O2k8MjQ+O2k8MjU+O2k8MjY+O2k8Mjc+O2k8Mjg+O2k8Mjk+O2k8MzA+O2k8MzE+O2k8MzI+O2k8MzM+Oz47bDx0PHA8cDxsPFRleHQ7PjtsPOaVmeWtpuaViOaenDs+Pjs+Ozs+O3Q8cDxwPGw8VGV4dDs+O2w8MTc7Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPOWvueWtpuenkeeahOWJjeayv+S7i+e7jeWKoOa3seaIkeS7rOWvueacrOWtpuenkeeahOiupOivhu+8jOWinuW8uuWtpuS5oOWFtOi2o+OAgjs+Pjs+Ozs+O3Q8O2w8aTwxPjtpPDU+O2k8Nz47PjtsPHQ8dDw7cDxsPGk8MD47aTwxPjtpPDI+O2k8Mz47aTw0PjtpPDU+Oz47bDxwPFxlO1xlPjtwPOS8mOengDvkvJjnp4A+O3A86Imv5aW9O+iJr+WlvT47cDzkuK3nrYk75Lit562JPjtwPOWQiOagvDvlkIjmoLw+O3A85LiN5ZCI5qC8O+S4jeWQiOagvD47Pj47Pjs7Pjt0PHA8cDxsPFRleHQ7PjtsPFxlOz4+Oz47Oz47dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8O2w8aTw1Pjs+O2w8dDxwPGw8VmlzaWJsZTs+O2w8bzxmPjs+Pjs7Pjs+Pjt0PDtsPGk8NT47PjtsPHQ8cDxsPFZpc2libGU7PjtsPG88Zj47Pj47Oz47Pj47dDw7bDxpPDU+Oz47bDx0PHA8bDxWaXNpYmxlOz47bDxvPGY+Oz4+Ozs+Oz4+O3Q8cDxwPGw8VGV4dDs+O2w8MC4wNjs+Pjs+Ozs+Oz4+Oz4+Oz4+Oz4+Oz4+O3Q8O2w8aTwwPjs+O2w8dDw7bDxpPDM+Oz47bDx0PEAwPDs7Ozs7Ozs7Ozs+Ozs+Oz4+Oz4+O3Q8O2w8aTwwPjs+O2w8dDw7bDxpPDM+Oz47bDx0PEAwPDs7Ozs7Ozs7Ozs+Ozs+Oz4+Oz4+O3Q8QDA8Ozs7Ozs7Ozs7Oz47Oz47dDw7bDxpPDE+Oz47bDx0PHA8cDxsPFRleHQ7PjtsPDUwOz4+Oz47Oz47Pj47dDxwPHA8bDxUZXh0Oz47bDwg5YWI5a6M5oiQ6K+E5Lu377yM5YaN5o+Q5LqkIDs+Pjs+Ozs+O3Q8dDw7dDxpPDU+O0A85LyY56eAO+iJr+WlvTvkuK3nrYk75ZCI5qC8O+S4jeWQiOagvDs+O0A85LyY56eAO+iJr+WlvTvkuK3nrYk75ZCI5qC8O+S4jeWQiOagvDs+Pjs+Ozs+Oz4+Oz4+Oz7+hYXYGkPSPwLAT1Xmme40kMuHpQ=="
+    />
+    <script language="javascript" type="text/javascript">< !--
+        function __doPostBack(eventTarget, eventArgument) {
+          var theform;
+          if (window.navigator.appName.toLowerCase().indexOf("microsoft") > -1) {
+            theform = document.Form1;
+          } else {
+            theform = document.forms["Form1"];
+          }
+          theform.__EVENTTARGET.value = eventTarget.split("$").join(":");
+          theform.__EVENTARGUMENT.value = eventArgument;
+          theform.submit();
+        }
+        // -->
+        </script>&nbsp;
+    <div class="toolbox">
+        <!-- 按钮 -->
+        <div class="buttonbox"></div>
+        <!-- 按钮 -->
+        <!-- 过滤条件开始 -->
+        <!-- 过滤条件结束 -->
+        <!-- 过滤条件结束 -->
+        <p class="toolbox_fot">
+            <em></em>
+        </p>
+    </div>
+    <!-- 多功能操作区 -->
+    <!-- 内容显示区开始 -->
+    <div class="main_box">
+        <div class="mid_box">
+            <div class="title">
+                <p>
+                    <!-- 查询得到的数据量显示区域 --></p>
+            </div>
+            <!-- From内容 -->
+            <span class="formbox">
+            <TABLE id="Table2" class="formlist" border="0" cellSpacing="0" cellPadding="0" width="100%">
+              <tr>
+                <td id="tdHead">亲爱的同学：
+                  <BR>&nbsp;&nbsp;&nbsp; 不断提高教学质量，是您和我们共同的期盼。对任课教师的授课和课程进行客观、公正的评价，将有关信息反馈到学校有关部门和院系，是提高教学质量的基础工作。因此，您的评价对提高学校教学质量和维护您自身的权益都将起到重要的作用。
+                  <BR>&nbsp;&nbsp;&nbsp; 请您给课堂教学质量按下列指标评价。谢谢。
+                  <BR>教务处</td></tr>
+              <tr>
+                <td>评价课程名称：
+                  <select name="pjkc" onchange="__doPostBack('pjkc','')" language="javascript" id="pjkc" style="Z-INDEX: 0">
+                    <option selected="selected" value="(2020-2021-1)-0702003-D030056-1">导游学</option>
+                    <option value="(2020-2021-1)-0712006-D030049-1">沟通管理</option>
+                    <option value="(2020-2021-1)-0712005-D020344-1">基础会计1</option>
+                    <option value="(2020-2021-1)-0702002-D030047-1">旅游经济学</option>
+                    <option value="(2020-2021-1)-9901108-D090189-3">毛泽东思想和中国特色社会主义理论体系概论</option>
+                    <option value="(2020-2021-1)-0712004-D020023-1">市场营销</option>
+                    <option value="(2020-2021-1)-313-C030020-1">体育3（跆拳道）</option>
+                    <option value="(2020-2021-1)-9901173-0000000-30">形势与政策</option>
+                    <option value="(2020-2021-1)-9901150-W070100-1">学术英语1</option></select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                  <span id="lblTs">
+                    <u>
+                      <font color="Red"></font></u>
+                  </span>
+                  <br>
+                  <br></td>
+              </tr>
+              <tr id="trPjs">
+                <TD>
+                  <fieldset>
+                    <legend>
+                      <span id="lblPjs">
+                        <b>
+                          <font size="4">评教师</font></b>
+                      </span>
+                    </legend>
+                    <div style="WIDTH: 980px; OVERFLOW: auto" id="divJs">
+                      <table class="datelist pjnr " cellspacing="0" cellpadding="3" border="0" id="DataGrid1" width="100%">
+                        <tr class="datelisthead ">
+                          <td width="80">一级指标</td>
+                          <td width="40">评价号</td>
+                          <td width="10%">评价内容</td>
+                          <td valign="Middle">张荣霞</td></tr>
+                        <tr>
+                          <td>教学态度</td>
+                          <td>1</td>
+                          <td class="FFF">准时上下课，没有随意调停课和课上使用手机现象。</td>
+                          <td>
+                            <select name="DataGrid1:_ctl2:JS1" id="DataGrid1__ctl2_JS1">
+                              <option value=""></option>
+                              <option value="优秀">优秀</option>
+                              <option selected="selected" value="良好">良好</option>
+                              <option value="中等">中等</option>
+                              <option value="合格">合格</option>
+                              <option value="不合格">不合格</option></select>
+                            <input name="DataGrid1:_ctl2:txtjs1" type="text" id="DataGrid1__ctl2_txtjs1" style="DISPLAY:none" /></td>
+                        </tr>
+                        <tr class="alt">
+                          <td>教学态度</td>
+                          <td>2</td>
+                          <td class="FFF">严格考勤，有效管理课堂纪律。</td>
+                          <td>
+                            <select name="DataGrid1:_ctl3:JS1" id="DataGrid1__ctl3_JS1">
+                              <option value=""></option>
+                              <option selected="selected" value="优秀">优秀</option>
+                              <option value="良好">良好</option>
+                              <option value="中等">中等</option>
+                              <option value="合格">合格</option>
+                              <option value="不合格">不合格</option></select>
+                            <input name="DataGrid1:_ctl3:txtjs1" type="text" id="DataGrid1__ctl3_txtjs1" style="DISPLAY:none" /></td>
+                        </tr>
+                        <tr>
+                          <td>教学态度</td>
+                          <td>3</td>
+                          <td class="FFF">老师平等地对待每一位学生。</td>
+                          <td>
+                            <select name="DataGrid1:_ctl4:JS1" id="DataGrid1__ctl4_JS1">
+                              <option value=""></option>
+                              <option value="优秀">优秀</option>
+                              <option selected="selected" value="良好">良好</option>
+                              <option value="中等">中等</option>
+                              <option value="合格">合格</option>
+                              <option value="不合格">不合格</option></select>
+                            <input name="DataGrid1:_ctl4:txtjs1" type="text" id="DataGrid1__ctl4_txtjs1" style="DISPLAY:none" /></td>
+                        </tr>
+                        <tr class="alt">
+                          <td>教学态度</td>
+                          <td>4</td>
+                          <td class="FFF">老师主动与学生交流，重视学生对教学的意见反馈。</td>
+                          <td>
+                            <select name="DataGrid1:_ctl5:JS1" id="DataGrid1__ctl5_JS1">
+                              <option value=""></option>
+                              <option selected="selected" value="优秀">优秀</option>
+                              <option value="良好">良好</option>
+                              <option value="中等">中等</option>
+                              <option value="合格">合格</option>
+                              <option value="不合格">不合格</option></select>
+                            <input name="DataGrid1:_ctl5:txtjs1" type="text" id="DataGrid1__ctl5_txtjs1" style="DISPLAY:none" /></td>
+                        </tr>
+                        <tr>
+                          <td>教学过程</td>
+                          <td>5</td>
+                          <td class="FFF">老师在课程开始时明确地告诉学生本课程的培养目标、学习要求以及课程考核方法。</td>
+                          <td>
+                            <select name="DataGrid1:_ctl6:JS1" id="DataGrid1__ctl6_JS1">
+                              <option value=""></option>
+                              <option selected="selected" value="优秀">优秀</option>
+                              <option value="良好">良好</option>
+                              <option value="中等">中等</option>
+                              <option value="合格">合格</option>
+                              <option value="不合格">不合格</option></select>
+                            <input name="DataGrid1:_ctl6:txtjs1" type="text" id="DataGrid1__ctl6_txtjs1" style="DISPLAY:none" /></td>
+                        </tr>
+                        <tr class="alt">
+                          <td>教学过程</td>
+                          <td>6</td>
+                          <td class="FFF">备课非常充分，熟悉授课内容，能够脱稿讲授。</td>
+                          <td>
+                            <select name="DataGrid1:_ctl7:JS1" id="DataGrid1__ctl7_JS1">
+                              <option value=""></option>
+                              <option selected="selected" value="优秀">优秀</option>
+                              <option value="良好">良好</option>
+                              <option value="中等">中等</option>
+                              <option value="合格">合格</option>
+                              <option value="不合格">不合格</option></select>
+                            <input name="DataGrid1:_ctl7:txtjs1" type="text" id="DataGrid1__ctl7_txtjs1" style="DISPLAY:none" /></td>
+                        </tr>
+                        <tr>
+                          <td>教学过程</td>
+                          <td>7</td>
+                          <td class="FFF">老师讲课有条理，口齿清晰，富有激情，讲课方式能始终吸引学生的兴趣和注意力。</td>
+                          <td>
+                            <select name="DataGrid1:_ctl8:JS1" id="DataGrid1__ctl8_JS1">
+                              <option value=""></option>
+                              <option selected="selected" value="优秀">优秀</option>
+                              <option value="良好">良好</option>
+                              <option value="中等">中等</option>
+                              <option value="合格">合格</option>
+                              <option value="不合格">不合格</option></select>
+                            <input name="DataGrid1:_ctl8:txtjs1" type="text" id="DataGrid1__ctl8_txtjs1" style="DISPLAY:none" /></td>
+                        </tr>
+                        <tr class="alt">
+                          <td>教学过程</td>
+                          <td>8</td>
+                          <td class="FFF">多媒体课件设计清晰直观，板书工整规范，讲解、板书和课件演示结合得当。</td>
+                          <td>
+                            <select name="DataGrid1:_ctl9:JS1" id="DataGrid1__ctl9_JS1">
+                              <option value=""></option>
+                              <option selected="selected" value="优秀">优秀</option>
+                              <option value="良好">良好</option>
+                              <option value="中等">中等</option>
+                              <option value="合格">合格</option>
+                              <option value="不合格">不合格</option></select>
+                            <input name="DataGrid1:_ctl9:txtjs1" type="text" id="DataGrid1__ctl9_txtjs1" style="DISPLAY:none" /></td>
+                        </tr>
+                        <tr>
+                          <td>教学过程</td>
+                          <td>9</td>
+                          <td class="FFF">授课能够承上启下，按章节适当归纳，并有适当的课后要求。</td>
+                          <td>
+                            <select name="DataGrid1:_ctl10:JS1" id="DataGrid1__ctl10_JS1">
+                              <option value=""></option>
+                              <option selected="selected" value="优秀">优秀</option>
+                              <option value="良好">良好</option>
+                              <option value="中等">中等</option>
+                              <option value="合格">合格</option>
+                              <option value="不合格">不合格</option></select>
+                            <input name="DataGrid1:_ctl10:txtjs1" type="text" id="DataGrid1__ctl10_txtjs1" style="DISPLAY:none" /></td>
+                        </tr>
+                        <tr class="alt">
+                          <td>教学过程</td>
+                          <td>10</td>
+                          <td class="FFF">授课时重点突出，难点分析透彻。</td>
+                          <td>
+                            <select name="DataGrid1:_ctl11:JS1" id="DataGrid1__ctl11_JS1">
+                              <option value=""></option>
+                              <option selected="selected" value="优秀">优秀</option>
+                              <option value="良好">良好</option>
+                              <option value="中等">中等</option>
+                              <option value="合格">合格</option>
+                              <option value="不合格">不合格</option></select>
+                            <input name="DataGrid1:_ctl11:txtjs1" type="text" id="DataGrid1__ctl11_txtjs1" style="DISPLAY:none" /></td>
+                        </tr>
+                        <tr>
+                          <td>教学过程</td>
+                          <td>11</td>
+                          <td class="FFF">授课内容丰富，不照本宣科，注重理论联系实际并适当前沿拓展。</td>
+                          <td>
+                            <select name="DataGrid1:_ctl12:JS1" id="DataGrid1__ctl12_JS1">
+                              <option value=""></option>
+                              <option selected="selected" value="优秀">优秀</option>
+                              <option value="良好">良好</option>
+                              <option value="中等">中等</option>
+                              <option value="合格">合格</option>
+                              <option value="不合格">不合格</option></select>
+                            <input name="DataGrid1:_ctl12:txtjs1" type="text" id="DataGrid1__ctl12_txtjs1" style="DISPLAY:none" /></td>
+                        </tr>
+                        <tr class="alt">
+                          <td>教学过程</td>
+                          <td>12</td>
+                          <td class="FFF">老师鼓励学生提出问题，并能及时给予解答。</td>
+                          <td>
+                            <select name="DataGrid1:_ctl13:JS1" id="DataGrid1__ctl13_JS1">
+                              <option value=""></option>
+                              <option selected="selected" value="优秀">优秀</option>
+                              <option value="良好">良好</option>
+                              <option value="中等">中等</option>
+                              <option value="合格">合格</option>
+                              <option value="不合格">不合格</option></select>
+                            <input name="DataGrid1:_ctl13:txtjs1" type="text" id="DataGrid1__ctl13_txtjs1" style="DISPLAY:none" /></td>
+                        </tr>
+                        <tr>
+                          <td>教学过程</td>
+                          <td>13</td>
+                          <td class="FFF">上课能够合理有效安排课堂时间。</td>
+                          <td>
+                            <select name="DataGrid1:_ctl14:JS1" id="DataGrid1__ctl14_JS1">
+                              <option value=""></option>
+                              <option selected="selected" value="优秀">优秀</option>
+                              <option value="良好">良好</option>
+                              <option value="中等">中等</option>
+                              <option value="合格">合格</option>
+                              <option value="不合格">不合格</option></select>
+                            <input name="DataGrid1:_ctl14:txtjs1" type="text" id="DataGrid1__ctl14_txtjs1" style="DISPLAY:none" /></td>
+                        </tr>
+                        <tr class="alt">
+                          <td>教学过程</td>
+                          <td>14</td>
+                          <td class="FFF">老师及时批改作业并给予反馈。</td>
+                          <td>
+                            <select name="DataGrid1:_ctl15:JS1" id="DataGrid1__ctl15_JS1">
+                              <option value=""></option>
+                              <option selected="selected" value="优秀">优秀</option>
+                              <option value="良好">良好</option>
+                              <option value="中等">中等</option>
+                              <option value="合格">合格</option>
+                              <option value="不合格">不合格</option></select>
+                            <input name="DataGrid1:_ctl15:txtjs1" type="text" id="DataGrid1__ctl15_txtjs1" style="DISPLAY:none" /></td>
+                        </tr>
+                        <tr>
+                          <td>教学效果</td>
+                          <td>15</td>
+                          <td class="FFF">教师的讲解、提问能有效引导我们独立思考,提高分析解决问题的能力。</td>
+                          <td>
+                            <select name="DataGrid1:_ctl16:JS1" id="DataGrid1__ctl16_JS1">
+                              <option value=""></option>
+                              <option selected="selected" value="优秀">优秀</option>
+                              <option value="良好">良好</option>
+                              <option value="中等">中等</option>
+                              <option value="合格">合格</option>
+                              <option value="不合格">不合格</option></select>
+                            <input name="DataGrid1:_ctl16:txtjs1" type="text" id="DataGrid1__ctl16_txtjs1" style="DISPLAY:none" /></td>
+                        </tr>
+                        <tr class="alt">
+                          <td>教学效果</td>
+                          <td>16</td>
+                          <td class="FFF">教师不仅教授我们知识, 还传授学习方法。</td>
+                          <td>
+                            <select name="DataGrid1:_ctl17:JS1" id="DataGrid1__ctl17_JS1">
+                              <option value=""></option>
+                              <option selected="selected" value="优秀">优秀</option>
+                              <option value="良好">良好</option>
+                              <option value="中等">中等</option>
+                              <option value="合格">合格</option>
+                              <option value="不合格">不合格</option></select>
+                            <input name="DataGrid1:_ctl17:txtjs1" type="text" id="DataGrid1__ctl17_txtjs1" style="DISPLAY:none" /></td>
+                        </tr>
+                        <tr>
+                          <td>教学效果</td>
+                          <td>17</td>
+                          <td class="FFF">对学科的前沿介绍加深我们对本学科的认识，增强学习兴趣。</td>
+                          <td>
+                            <select name="DataGrid1:_ctl18:JS1" id="DataGrid1__ctl18_JS1">
+                              <option value=""></option>
+                              <option selected="selected" value="优秀">优秀</option>
+                              <option value="良好">良好</option>
+                              <option value="中等">中等</option>
+                              <option value="合格">合格</option>
+                              <option value="不合格">不合格</option></select>
+                            <input name="DataGrid1:_ctl18:txtjs1" type="text" id="DataGrid1__ctl18_txtjs1" style="DISPLAY:none" /></td>
+                        </tr>
+                      </table>
+                    </div>
+                  </fieldset>
+                </TD>
+              </tr>
+              <TR>
+                <TD height="66">
+                  <br>
+                  <p id="idjypj">其他评价与建议（限
+                    <span id="lblMsg">50</span>中文字
+                    <span id="lblsfbt">，可不填</span>）：</p>
+                  <br>
+                  <textarea name="pjxx" id="pjxx"></textarea>
+                </TD>
+              </TR>
+              <tr>
+                <td id="tdFoot"></td>
+              </tr>
+            </TABLE>注意：在教学评价时需要每评价一门课程保存一次，最后全评完了才能提交数据。一次必须全部评完，否则评价数据无效。</span>
+            <div class="footbox">
+                <em class="footbox_con">
+                    <span class="pagination"></span>
+                    <span class="footbutton">
+                <input name="txt1" type="text" onchange="__doPostBack('txt1','')" language="javascript" id="txt1" style="DISPLAY: none" />
+                <input type="submit" name="Button4" value="" id="Button4" style="DISPLAY: none" />
+                <input type="submit" name="Button3" value="" id="Button3" style="DISPLAY: none" />
+                <input name="TextBox1" type="text" value="0" id="TextBox1" style="DISPLAY: none" />
+                <input type="submit" name="Button1" value=" 保  存 " id="Button1" class="button" />&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="submit" name="Button2" value=" 先完成评价，再提交 " id="Button2" disabled="disabled" class="button" />&nbsp;&nbsp;</span>
+                    <!-- 底部按钮位置 --></em>
+            </div>
+        </div>
+    </div>
+    <div style="Z-INDEX: 1001; TEXT-ALIGN: left" id="Popup" class="transparent">
+        <span style="FONT-WEIGHT: bold">详细信息&nbsp;:</span>
+        <span style="WIDTH: 400px; DISPLAY: block" id="td1"></span>
+    </div>
+    <div style="DISPLAY: none" id="div1">
+        <div align="right">
+            <span style="CURSOR: pointer" id="span2">关闭</span></div>
+        <div style="FONT-SIZE: 18px" id="zb" align="center"></div>
+        <table id="RadioButtonList1" border="0">
+            <tr>
+                <td>
+                    <input id="RadioButtonList1_0" type="radio" name="RadioButtonList1" value="优秀" />
+                    <label for="RadioButtonList1_0">优秀</label></td>
+                <td>
+                    <input id="RadioButtonList1_1" type="radio" name="RadioButtonList1" value="良好" />
+                    <label for="RadioButtonList1_1">良好</label></td>
+                <td>
+                    <input id="RadioButtonList1_2" type="radio" name="RadioButtonList1" value="中等" />
+                    <label for="RadioButtonList1_2">中等</label></td>
+                <td>
+                    <input id="RadioButtonList1_3" type="radio" name="RadioButtonList1" value="合格" />
+                    <label for="RadioButtonList1_3">合格</label></td>
+                <td>
+                    <input id="RadioButtonList1_4" type="radio" name="RadioButtonList1" value="不合格" />
+                    <label for="RadioButtonList1_4">不合格</label></td>
+            </tr>
+        </table>
+        <br></div>
+</form>
+<script language="javascript">var $;
+      if (document.getElementById) {
+        $ = function() {
+          var elements = new Array();
+          for (var i = 0; i < arguments.length; i++) {
+            var element = arguments[i];
+            if (typeof element == 'string') {
+              element = document.getElementById(element);
+            }
+            if (arguments.length == 1) {
+              return element;
+            }
+            elements.push(element);
+          }
+          return elements;
+        };
+      } else if (document.all) {
+        $ = function() {
+          var elements = new Array();
+          for (var i = 0; i < arguments.length; i++) {
+            var element = arguments[i];
+            if (typeof element == 'string') {
+              element = document.all[element];
+            }
+            if (arguments.length == 1) {
+              return element;
+            }
+            elements.push(element);
+          }
+          return elements;
+        };
+      }
+      var intwidth = screen.width - 100;
+      //$("divJs").style.width=intwidth-150;
+      //$("divJs").style.cssText="MIN-HEIGHT: 210px; OVERFLOW-X: auto; WIDTH: " + intwidth + "px; HEIGHT: 210px"
+      var xxmc = "福建农林大学金山学院";
+      if (xxmc == "温州医学院") {
+        $("divJs").style.cssText = "OVERFLOW: auto; WIDTH: " + intwidth + "px; HEIGHT: 190px;MIN-HEIGHT: 190px; "
+      } else {
+        if ($("divJs") != null) {
+          $("divJs").style.cssText = "OVERFLOW: auto; WIDTH: " + intwidth + "px; ";
+        }
+
+      }
+      function click() {
+        if (event.button == 2) { //改成button==2为禁止右键
+          alert('对不起,禁止使用此功能.')
+        }
+      }
+      var i = 0;
+      for (i = 0; i < document.all.tags("img").length; i++) {
+        document.all.tags("img")(i).onmousedown = click;
+      }</script>
+</BODY>
+
+</HTML>

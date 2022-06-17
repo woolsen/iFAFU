@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="WoToolbar">
+        <attr name="elevation" format="dimension" />
+        <attr name="title" format="string" />
+        <attr name="titleTextColor" format="color" />
+        <attr name="titleTextAppearance" format="reference" />
+        <attr name="subtitle" format="string" />
+        <attr name="subtitleTextColor" format="color" />
+        <attr name="subtitleTextAppearance" format="reference" />
+        <attr name="navigationIcon" format="reference" />
+        <attr name="navigationContentDescription" format="string" />
+    </declare-styleable>
+
+    <attr name="wToolbarStyle" format="reference" />
+
+    <declare-styleable name="EmptyView">
+        <attr name="message" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="SmoothCheckBox">
+        <attr name="duration" format="integer"/>
+        <attr name="stroke_width" format="dimension"/>
+        <attr name="color_tick" format="color"/>
+        <attr name="color_checked" format="color"/>
+        <attr name="color_unchecked" format="color"/>
+        <attr name="color_unchecked_stroke" format="color"/>
+    </declare-styleable>
+
+    <declare-styleable name="Timeline">
+        <attr name="timeline_color" format="color"/>
+        <attr name="timeline_count" format="integer"/>
+        <attr name="timeline_textSize" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="CornerImageView">
+        <attr name="o_cornerSize" format="dimension" />
+        <attr name="o_strokeSize" format="dimension" />
+        <attr name="o_strokeColor" format="color" />
+        <attr name="o_strokeFront" format="boolean" />
+    </declare-styleable>
+
+    <attr name="constraintToolbarStyle" format="reference" />
+</resources>

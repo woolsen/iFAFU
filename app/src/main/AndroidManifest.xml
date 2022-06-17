@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="cn.ifafu.ifafu">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" /> <!-- 点击链接自动跳转拨号界面（需用户按拨打电话按钮才能开始通话） -->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
+    <application
+        android:name=".IFAFU"
+        android:allowBackup="true"
+        android:fullBackupContent="true"
+        android:icon="${app_icon}"
+        android:label="${app_name}"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:roundIcon="${app_icon_round}"
+        android:theme="@style/AppTheme"
+        tools:ignore="ExportedService,GoogleAppIndexingWarning,UnusedAttribute,LockedOrientationActivity"
+        tools:replace="android:theme,android:networkSecurityConfig,android:icon,android:label">
+        <activity
+            android:name=".ui.activity.SplashActivity"
+            android:exported="true"
+            android:theme="@style/AppTheme.Splash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.main.MainActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".ui.login.LoginActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.Login" />
+        <activity
+            android:name=".ui.examlist.ExamListActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".ui.comment.CommentActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".ui.web.WebActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".ui.setting.SettingActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".ui.login2.LoginActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.Login" />
+        <activity
+            android:name=".ui.elective.ElectiveActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".ui.activity.AboutActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".ui.activity.BoyaActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".ui.electricity.login.ElectricityLoginActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".ui.electricity.main.ElectricityActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.Electricity" />
+        <activity
+            android:name=".ui.score.ScoreActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".ui.timetable.TimetableActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".ui.timetable_item.TimetableItemActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".ui.timetable_setting.TimetableSettingActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".ui.feedback.FeedbackActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".ui.feedback.item.FeedbackItemActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".ui.information.InformationActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".ui.upload.UploadActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".ui.center.CenterActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".ui.informationexamine.ExamineActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".ui.upload.ShowPictureActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name="com.tencent.bugly.beta.ui.BetaActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize|locale"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.Translucent" />
+        <activity
+            android:name="com.yalantis.ucrop.UCropActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+        <!--        <meta-data-->
+        <!--            android:name="BUGLY_APP_CHANNEL"-->
+        <!--            android:value="${channel}" />-->
+        <meta-data
+            android:name="android.notch_support"
+            android:value="true" />
+        <meta-data
+            android:name="notch.config"
+            android:value="portrait|landscape" />
+
+        <receiver
+            android:name=".ui.widget.SyllabusWidget"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/syllabus_widget_info" />
+        </receiver>
+    </application>
+
+</manifest>
